@@ -255,8 +255,8 @@ app.post('/send-mail', upload.array('files', 5), async (req, res) => {
 
 // SSL configuration
 const options = {
-  key: fs.readFileSync('/letsencrypt/live/api.emirotomatcnc.com/privkey.pem'),
-  cert: fs.readFileSync('/letsencrypt/live/api.emirotomatcnc.com/fullchain.pem')
+  key: fs.readFileSync('/etc/letsencrypt/live/api.emirotomatcnc.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/api.emirotomatcnc.com/fullchain.pem')
 };
 
 https.createServer(options, app).listen(process.env.PORT, () => {
