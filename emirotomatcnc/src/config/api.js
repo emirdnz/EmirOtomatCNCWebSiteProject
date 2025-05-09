@@ -1,1 +1,1 @@
-export const API_URL = 'http://34.40.7.170:5000';
+export const API_URL = `https://${process.env.VITE_API_DOMAIN}:${process.env.VITE_API_PORT}`;
