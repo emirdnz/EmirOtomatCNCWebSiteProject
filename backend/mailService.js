@@ -252,11 +252,26 @@ app.post('/send-mail', upload.array('files', 5), async (req, res) => {
   }
 });
 
-const options = {
-  key: fs.readFileSync(process.env.SSL_KEY_PATH),
-  cert: fs.readFileSync(process.env.SSL_CERT_PATH)
-};
+// SSL options with error handling
+try {
+  const options = {
+    key: fs.readFileSync('/letsencrypt/live/api.emirotomatcnc.com/privkey.pem'),
+    cert: fs.readFileSync('/letsencrypt/live/api.emirotomatcnc.com/fullchain.pem'),
+    ca: fs.readFileSync('/letsencrypt/live/api.emirotomatcnc.com/chain.pem')
+  };
 
-https.createServer(options, app).listen(process.env.PORT, () => {
-  console.log(`HTTPS Server ${process.env.PORT} portunda çalışıyor`);
-});
+  // Create HTTPS server with error handling
+  const server = https.createServer(options, app);
+  
+  server.on('error', (error) => {
+    console.error('HTTPS Server Error:', error);
+  });
+
+  server.listen(process.env.PORT, () => {
+    console.log(`HTTPS Server ${process.env.PORT} portunda çalışıyor`);
+  });
+
+} catch (error) {
+  console.error('SSL Configuration Error:', error);
+  process.exit(1); // Exit if SSL configuration fails
+}
