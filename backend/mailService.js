@@ -253,7 +253,7 @@ app.post('/send-mail', upload.array('files', 5), async (req, res) => {
   }
 });
 
-// SSL configuration
+// SSL yapılandırması
 const options = {
   key: fs.readFileSync('/etc/letsencrypt/live/api.emirotomatcnc.com/privkey.pem'),
   cert: fs.readFileSync('/etc/letsencrypt/live/api.emirotomatcnc.com/fullchain.pem'),
@@ -261,11 +261,7 @@ const options = {
   ciphers: 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256'
 };
 
-// Create HTTPS servers for both ports
-https.createServer(options, app).listen(443, () => {
-  console.log('HTTPS Server running on port 443');
-});
-
+// Sadece 5000 portunu dinle, 443'ü Nginx ile yönetelim
 https.createServer(options, app).listen(process.env.PORT, () => {
-  console.log(`HTTPS Server running on port ${process.env.PORT}`);
+  console.log(`HTTPS Server ${process.env.PORT} portunda çalışıyor`);
 });
