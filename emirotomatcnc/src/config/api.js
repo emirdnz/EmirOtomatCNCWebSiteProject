@@ -1,2 +1,2 @@
 // Hardcoded version for now to fix the issue
-export const API_URL = 'https://api.emirotomatcnc.com';
+export const API_URL = 'http://api.emirotomatcnc.com:5000';
