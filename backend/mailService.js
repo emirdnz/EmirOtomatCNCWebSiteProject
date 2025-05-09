@@ -253,31 +253,12 @@ app.post('/send-mail', upload.array('files', 5), async (req, res) => {
   }
 });
 
-// SSL configuration with proper error handling
-try {
-  const options = {
-    key: fs.readFileSync(process.env.SSL_KEY_PATH),
-    cert: fs.readFileSync(process.env.SSL_CERT_PATH),
-    ca: fs.readFileSync(process.env.SSL_CHAIN_PATH),
-    secureOptions: require('constants').SSL_OP_NO_TLSv1 | require('constants').SSL_OP_NO_TLSv1_1
-  };
+// SSL configuration
+const options = {
+  key: fs.readFileSync('/letsencrypt/live/api.emirotomatcnc.com/privkey.pem'),
+  cert: fs.readFileSync('/letsencrypt/live/api.emirotomatcnc.com/fullchain.pem')
+};
 
-  const server = https.createServer(options, app);
-
-  server.on('error', (error) => {
-    console.error('HTTPS Server Error:', error);
-  });
-
-  server.listen(process.env.PORT, () => {
-    console.log(`HTTPS Server running on port ${process.env.PORT}`);
-  });
-
-} catch (error) {
-  console.error('SSL Configuration Error:', error);
-  console.error('SSL Paths:', {
-    key: process.env.SSL_KEY_PATH,
-    cert: process.env.SSL_CERT_PATH,
-    chain: process.env.SSL_CHAIN_PATH
-  });
-  process.exit(1);
-}
+https.createServer(options, app).listen(process.env.PORT, () => {
+  console.log(`HTTPS Server running on port ${process.env.PORT}`);
+});
