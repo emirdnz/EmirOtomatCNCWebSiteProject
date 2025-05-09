@@ -6,11 +6,12 @@ import tr from 'date-fns/locale/tr';
 import "react-datepicker/dist/react-datepicker.css";
 import '../styles/animations.css'; 
 import OrderSummaryModal from '../components/OrderSummaryModal';
+import { API_URL } from '../config/api';
 
 // Türkçe lokalizasyonu kaydet
 registerLocale('tr', tr);
 
-// Move materials to constant outside component
+// Sabitler
 const MATERIALS = [
   { value: "", label: 'uploadModel.material' },
   { value: "alüminyum", label: 'uploadModel.aluminum' },
@@ -21,20 +22,26 @@ const MATERIALS = [
   { value: "özel", label: 'uploadModel.custom' }
 ];
 
+const INITIAL_CUSTOMER_STATE = {
+  name: '',
+  title: '',
+  company: '',
+  phone: '',
+  email: '',
+  address: '',
+};
+
+// Yardımcı Fonksiyonlar
 const formatDate = {
   toDisplay: (date) => {
     if (!date) return '';
     try {
-      const d = date.includes('.') 
-        ? date.split('.').reverse().join('-')
-        : date;
-      const dt = new Date(d);
-      return isNaN(dt.getTime()) ? date : dt.toLocaleDateString('tr-TR');
+      const d = date.includes('.') ? date.split('.').reverse().join('-') : date;
+      return new Date(d).toLocaleDateString('tr-TR');
     } catch {
       return date;
     }
   },
-  
   toInput: (date) => {
     if (!date) return '';
     try {
@@ -46,107 +53,57 @@ const formatDate = {
   }
 };
 
-// Sayıyı formatlayan yardımcı fonksiyon
-const formatQuantity = (number) => {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-};
+const formatQuantity = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const validateEmail = (email) => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
 
-const Notification = ({ type, message, onClose }) => {
-  const { t } = useTranslation();
+// Bildirim Bileşeni
+const Notification = ({ type, message }) => (
+  <div className={`notification ${type}`}>
+    {type === 'success' ? <BsCheckCircle size={24} /> : <BsXCircle size={24} />}
+    <span>{message}</span>
+  </div>
+);
 
-  return (
-    <div
-      className={`notification ${type}`}
-      style={{
-        position: 'fixed',
-        top: '20px',
-        right: '20px',
-        padding: '16px 24px',
-        borderRadius: '8px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '12px',
-        animation: 'slideIn 0.3s ease-out',
-        zIndex: 9999,
-        backgroundColor: type === 'success' ? '#34c759' : '#ff3b30',
-        color: 'white',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-      }}
-    >
-      {type === 'success' ? (
-        <BsCheckCircle size={24} />
-      ) : (
-        <BsXCircle size={24} />
-      )}
-      <span style={{ fontSize: '15px', fontWeight: 500 }}>{message}</span>
-    </div>
-  );
-};
-
+// Ana Bileşen
 const UploadModel = () => {
-  const { t, i18n } = useTranslation();
-  const dateInputRef = useRef();
-
-  const [customerModal, setCustomerModal] = useState(false);
-  const [customer, setCustomer] = useState({
-    name: '',
-    title: '',
-    company: '',
-    phone: '',
-    email: '',
-    address: '',
-  });
-
-  const [showCustomerError, setShowCustomerError] = useState(false);
-
+  // State tanımlamaları
+  const [customer, setCustomer] = useState(INITIAL_CUSTOMER_STATE);
   const [files, setFiles] = useState([]);
   const [selectedFileId, setSelectedFileId] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [showCustomerError, setShowCustomerError] = useState(false);
+  const [customerModal, setCustomerModal] = useState(false);
   const [showSummaryModal, setShowSummaryModal] = useState(false);
   const [notification, setNotification] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Use useMemo for selected file
-  const selectedFile = useMemo(
-    () => files.find(f => f.id === selectedFileId) || null,
-    [files, selectedFileId]
-  );
+  const { t, i18n } = useTranslation();
+  const dateInputRef = useRef();
 
-  const validateEmail = (email) => {
-    // RFC 5322 standardına uygun email regex
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return emailRegex.test(email);
-  };
+  // Memoize edilmiş değerler
+  const selectedFile = useMemo(() => files.find(f => f.id === selectedFileId), [files, selectedFileId]);
+  const isCustomerInfoComplete = useMemo(() => Object.values(customer).every(v => v.trim()), [customer]);
+  const areFileDetailsComplete = useMemo(() => files.length > 0 && files.every(f => f.quantity && f.material), [files]);
 
   const handleCustomerChange = (e) => {
     const { name, value } = e.target;
-    
-    // Email alanı için özel kontrol
+
     if (name === 'email') {
       const isValidEmail = validateEmail(value);
-      // Email geçersizse input border rengini kırmızı yap
       e.target.style.borderColor = isValidEmail ? '#ccc' : '#ff4444';
     }
-    
+
     setCustomer((prev) => ({ ...prev, [name]: value }));
   };
 
   const validateCustomerDetails = () => {
-    // Önce email kontrolü yap
-    if (!customer.email.trim()) {
+    if (!customer.email.trim() || !validateEmail(customer.email)) {
       setShowCustomerError(true);
       setTimeout(() => setShowCustomerError(false), 3000);
       return false;
     }
 
-    if (!validateEmail(customer.email)) {
-      setShowCustomerError(true);
-      setTimeout(() => setShowCustomerError(false), 3000);
-      return false;
-    }
-    
-    // Diğer alanların kontrolü
     const hasEmptyFields = Object.values(customer).some(value => !value.trim());
     if (hasEmptyFields) {
       setShowCustomerError(true);
@@ -172,7 +129,7 @@ const UploadModel = () => {
     const newFiles = Array.from(e.target.files).map((file) => ({
       id: `${file.name}_${Date.now()}`,
       name: file.name,
-      originalFile: file, // Save the original file
+      originalFile: file,
       quantity: '',
       material: '',
       deliveryDate: '',
@@ -184,9 +141,7 @@ const UploadModel = () => {
 
   const handleFileDetailChange = (id, key, value) => {
     if (key === 'quantity') {
-      // Sadece sayıları al
       const numericValue = value.replace(/[^0-9]/g, '');
-      // Sayıyı formatla
       const formattedValue = formatQuantity(numericValue);
       setFiles(prev =>
         prev.map(file => (file.id === id ? { ...file, [key]: formattedValue } : file))
@@ -198,21 +153,9 @@ const UploadModel = () => {
     }
   };
 
-  // Use useMemo for computed values
-  const isCustomerInfoComplete = useMemo(
-    () => Object.values(customer).every(v => v.trim()),
-    [customer]
-  );
-
-  const areFileDetailsComplete = useMemo(
-    () => files.length > 0 && files.every(f => f.quantity && f.material),
-    [files]
-  );
-
   const validateFileDetails = () => {
     if (!selectedFile) return false;
-    
-    // Zorunlu alanları kontrol et
+
     const requiredFields = {
       quantity: selectedFile.quantity,
       material: selectedFile.material,
@@ -220,14 +163,13 @@ const UploadModel = () => {
     };
 
     const hasMissingFields = Object.values(requiredFields).some(value => !value);
-    
+
     if (hasMissingFields) {
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
       return false;
     }
 
-    // Özel malzeme seçildiyse custom material kontrolü
     if (selectedFile.material === 'özel' && !selectedFile.customMaterial) {
       setShowError(true);
       setTimeout(() => setShowError(false), 3000);
@@ -248,7 +190,6 @@ const UploadModel = () => {
       return;
     }
 
-    // Özet modalını göster
     setShowSummaryModal(true);
   };
 
@@ -256,20 +197,18 @@ const UploadModel = () => {
     try {
       setIsLoading(true);
       const formData = new FormData();
-      
+
       formData.append('customer', JSON.stringify(customer));
       formData.append('fileDetails', JSON.stringify(files));
       formData.append('language', i18n.language);
 
-      // Dosyaları ekle
       files.forEach(file => {
         if (file.originalFile) {
-          console.log('Adding file:', file.originalFile.name); // Debug için
           formData.append('files', file.originalFile);
         }
       });
 
-      const response = await fetch('http://localhost:5000/send-mail', {
+      const response = await fetch(`${API_URL}/send-mail`, {
         method: 'POST',
         body: formData
       });
@@ -277,25 +216,29 @@ const UploadModel = () => {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Bir hata oluştu');
+        // Sunucu hatası için özel mesaj
+        throw new Error(
+          i18n.language === 'tr'
+            ? (result.error || 'Sunucuda bir problem oluştu. Ekiplerimize bildirildi.')
+            : (result.error || 'A server error occurred. Our team has been notified.')
+        );
       }
 
       setNotification({
         type: 'success',
-        message: t('uploadModel.orderSuccess')
+        message:
+          i18n.language === 'tr'
+            ? 'Siparişiniz başarıyla alındı.'
+            : 'Your order has been received successfully.'
       });
 
-      // Form sıfırlama
       setFiles([]);
-      setCustomer({
-        name: '', email: '', phone: '', address: ''
-      });
+      setCustomer(INITIAL_CUSTOMER_STATE);
 
     } catch (error) {
-      console.error('Submit error:', error);
       setNotification({
         type: 'error',
-        message: error.message || t('uploadModel.orderError')
+        message: error.message
       });
     } finally {
       setIsLoading(false);
@@ -322,7 +265,7 @@ const UploadModel = () => {
   const handleCloseModal = () => {
     const isValid = validateFileDetails();
     if (!isValid) return;
-    
+
     setIsModalVisible(false);
     setSelectedFileId(null);
     setShowError(false);

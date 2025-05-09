@@ -9,7 +9,11 @@ dotenv.config();
 const app = express();
 
 // CORS ayarları
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN,
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 
 // Body parser ayarları
 app.use(express.json({ limit: '50mb' }));
@@ -41,9 +45,9 @@ const transporter = nodemailer.createTransport({
 
 // İletişim bilgilerini environment variables'a taşı
 const COMPANY_CONTACT = {
-  address: process.env.COMPANY_ADDRESS || 'İkitelli Osb Mahallesi B6 Blok E4 Sokak Başakşehir/İstanbul',
-  email: process.env.COMPANY_EMAIL || 'info@emirotomatcnc.com',
-  phone: process.env.COMPANY_PHONE || '+90 (212) 671 17 40'
+  address: process.env.COMPANY_ADDRESS,
+  email: process.env.COMPANY_EMAIL,
+  phone: process.env.COMPANY_PHONE
 };
 
 // Mail templates için dil desteği ekleyelim
@@ -243,7 +247,7 @@ app.post('/send-mail', upload.array('files', 5), async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server ${PORT} portunda çalışıyor`);
 });

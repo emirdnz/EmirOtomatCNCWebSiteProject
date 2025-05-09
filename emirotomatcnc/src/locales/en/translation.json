@@ -244,6 +244,8 @@
     "summarizeAll": "Summarize All Orders",
     "orderSuccess": "Your order has been sent successfully!",
     "orderError": "An error occurred while sending the order. Please try again.",
-    "sending": "Sending..." 
+    "sending": "Sending...",
+    "serverError": "A server error occurred. Our team has been notified."
+    
   }
 }

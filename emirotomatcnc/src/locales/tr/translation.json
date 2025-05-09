@@ -250,6 +250,7 @@
     "summarizeAll": "Tüm Siparişleri Özetle",
     "orderSuccess": "Siparişiniz başarıyla gönderildi!",
     "orderError": "Sipariş gönderilirken bir hata oluştu. Lütfen tekrar deneyin.",
-    "sending": "Gönderiliyor..."
+    "sending": "Gönderiliyor...",
+     "serverError": "Sunucuda bir problem oluştu. Ekiplerimize bildirildi."
   }
 }
