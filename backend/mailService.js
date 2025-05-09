@@ -254,10 +254,10 @@ app.post('/send-mail', upload.array('files', 5), async (req, res) => {
 });
 
 const options = {
-  key: fs.readFileSync('/etc/ssl/private/selfsigned.key'),
-  cert: fs.readFileSync('/etc/ssl/certs/selfsigned.crt')
+  key: fs.readFileSync(process.env.SSL_KEY_PATH),
+  cert: fs.readFileSync(process.env.SSL_CERT_PATH)
 };
 
-https.createServer(options, app).listen(5000, () => {
-  console.log('HTTPS Server 5000 portunda çalışıyor');
+https.createServer(options, app).listen(process.env.PORT, () => {
+  console.log(`HTTPS Server ${process.env.PORT} portunda çalışıyor`);
 });
