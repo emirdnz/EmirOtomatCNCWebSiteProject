@@ -1,1 +1,2 @@
-export const API_URL = `https://${process.env.VITE_API_DOMAIN}:${process.env.VITE_API_PORT}`;
+// Hardcoded version for now to fix the issue
+export const API_URL = 'https://api.emirotomatcnc.com:5000';
