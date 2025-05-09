@@ -9,9 +9,13 @@ dotenv.config();
 const app = express();
 
 // CORS ayarları
+const corsOrigins = [
+  process.env.CORS_ORIGIN_1,
+  process.env.CORS_ORIGIN_2
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN,
-  methods: ['GET', 'POST'],
+  origin: corsOrigins,
   credentials: true
 }));
 
