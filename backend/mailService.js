@@ -3,6 +3,8 @@ const nodemailer = require('nodemailer');
 const multer = require('multer');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const https = require('https');
+const fs = require('fs');
 
 dotenv.config();
 
@@ -251,7 +253,11 @@ app.post('/send-mail', upload.array('files', 5), async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT|| 5000;
-app.listen(PORT, () => {
-  console.log(`Server ${PORT} portunda çalışıyor`);
+const options = {
+  key: fs.readFileSync('/etc/ssl/private/selfsigned.key'),
+  cert: fs.readFileSync('/etc/ssl/certs/selfsigned.crt')
+};
+
+https.createServer(options, app).listen(5000, () => {
+  console.log('HTTPS Server 5000 portunda çalışıyor');
 });
