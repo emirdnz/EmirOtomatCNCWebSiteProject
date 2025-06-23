@@ -1,0 +1,44 @@
+{
+  "title": "Get Instant Quotes in Minutes  ",
+  "introText": "With Emir Otomat's new rapid quote platform, get pricing instantly and place your order in minutes! 🚀",
+  "detailsText": "Our quick quote process takes just three easy steps:",
+  "steps": {
+    "1": {
+      "title": "Quick File Upload",
+      "description": "Upload your CAD files instantly (STEP, IGES, or DWG format)",
+      "tips": [
+        "Select files with all technical details",
+        "Use standard CAD formats",
+        "Specify your special requirements"
+      ]
+    },
+    "2": {
+      "title": "Instant Quote",
+      "description": "Get detailed pricing quote within minutes",
+      "tips": [
+        "Choose material type",
+        "Specify quantity needed",
+        "Add any custom requirements"
+      ]
+    },
+    "3": {
+      "title": "Quick Approval",
+      "description": "Review and approve your quote instantly",
+      "tips": [
+        "Check quote details",
+        "Approve with one click",
+        "Get your order processed immediately"
+      ]
+    }
+  },
+  "summarySteps": {
+    "1": "Upload Your File ⚡",
+    "2": "Get Instant Quote 📋",
+    "3": "Quick Approval ✅"
+  },
+  "buttons": {
+    "details": "How to Get Quick Quote? 👉",
+    "order": "Get Instant Quote ⚡",
+    "close": "Close ✕"
+  }
+}

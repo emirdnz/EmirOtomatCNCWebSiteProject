@@ -3,15 +3,13 @@ import AboutSection from "../components/AboutSection";
 import ExperienceSection from "../components/ExperienceSection";
 import OurWorksSection from "../components/OurWorksSection";
 import IndustriesSection from "../components/IndustriesSection";
-//import ProductionProcessSection from "../components/ProductionProcessSection";
 import Header from "../components/Header";
 import OnlineProcess from "../components/OnlineProcess";
+import OrderPopup from "../components/OrderPopup";
 
 function HomepageContainer() {
   return (
     <div>
-      
-      
       {/* Carousel Section */}
       <HomeCarousel />
       {/* Industries Section */}
@@ -24,6 +22,8 @@ function HomepageContainer() {
       <ExperienceSection />
       {/* OurWorks Section */}
       <OurWorksSection />
+      {/* Order Popup */}
+      <OrderPopup />
     </div>
   );
 }

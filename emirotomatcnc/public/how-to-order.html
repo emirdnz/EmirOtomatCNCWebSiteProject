@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasıl Sipariş Verilir? | Emir Otomat CNC</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: var(--bg-white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .home-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto 40px;
+            padding: 0 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px;
+            background: var(--bg-white);
+            border-radius: 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .hero h1 {
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .steps {
+            display: grid;
+            gap: 32px;
+        }
+
+        .step-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 32px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 24px;
+            align-items: start;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .step-content h2 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .tips {
+            background: #f0f7ff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        .tips h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .tips ul {
+            list-style: none;
+        }
+
+        .tips li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 24px;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .step-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <img src="/logo.png" alt="Emir Otomat CNC" class="logo">
+            <a href="/" class="home-link">
+                <span>Ana Sayfa</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Online Sipariş Nasıl Verilir?</h1>
+            <p>
+                Emir Otomat CNC'nin yeni online sipariş sistemi ile parça siparişlerinizi hızlı ve kolay bir şekilde verebilirsiniz. 
+                İşte adım adım yapmanız gerekenler:
+            </p>
+        </div>
+
+        <div class="steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h2>Teknik Çizim Hazırlama</h2>
+                    <p>
+                        Üretilmesini istediğiniz parçanın teknik çizimini veya 3D modelini hazırlayın. 
+                        Bu, siparişinizin tam istediğiniz gibi üretilmesi için çok önemlidir.
+                    </p>
+                    <div class="tips">
+                        <h3>Öneriler</h3>
+                        <ul>
+                            <li>CAD dosyaları tercih edilir (STEP, IGES, DWG)</li>
+                            <li>Tüm ölçüler net ve okunabilir olmalı</li>
+                            <li>Toleransları belirtmeyi unutmayın</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h2>Malzeme ve Adet Bilgisi</h2>
+                    <p>
+                        Parçanın üretiminde kullanılacak malzemeyi ve kaç adet üretim yapılacağını belirtin.
+                        Bu bilgiler fiyatlandırma için çok önemlidir.
+                    </p>
+                    <div class="tips">
+                        <h3>Dikkat Edilecekler</h3>
+                        <ul>
+                            <li>Malzeme türünü doğru seçin</li>
+                            <li>Toplam adet bilgisini net belirtin</li>
+                            <li>Özel gereksinimlerinizi not edin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h2>Sipariş Gönderimi</h2>
+                    <p>
+                        Hazırladığınız çizim ve belirlediğiniz detayları online sipariş formumuz üzerinden bize iletin.
+                        En kısa sürede size dönüş yapacağız.
+                    </p>
+                    <div class="tips">
+                        <h3>Son Kontrol</h3>
+                        <ul>
+                            <li>Çizim dosyasının doğru yüklendiğinden emin olun</li>
+                            <li>İletişim bilgilerinizi kontrol edin</li>
+                            <li>Varsa özel notlarınızı ekleyin</li>
+                        </ul>
+                    </div>
+                    <a href="/upload-model" class="cta-button">
+                        Sipariş Ver
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

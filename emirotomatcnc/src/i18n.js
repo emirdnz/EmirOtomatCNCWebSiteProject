@@ -2,6 +2,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import enTranslation from './locales/en/translation.json';
 import trTranslation from './locales/tr/translation.json';
+import enOrderPopup from './locales/en/orderPopup.json';
+import trOrderPopup from './locales/tr/orderPopup.json';
 
 const savedLanguage = localStorage.getItem('language') || 'tr'; // Eğer yoksa varsayılan dil olarak 'tr' kullan
 
@@ -11,10 +13,12 @@ i18n
   .init({
     resources: {
       en: {
-        translation: enTranslation
+        translation: enTranslation,
+        orderPopup: enOrderPopup
       },
       tr: {
-        translation: trTranslation
+        translation: trTranslation,
+        orderPopup: trOrderPopup
       }
     },
     lng: savedLanguage,  // Varsayılan dili belirle
