@@ -1,0 +1,44 @@
+{
+  "title": "Dakikalar İçinde Hızlı Teklif Alın ",
+  "introText": "Emir Otomat'ın yeni hızlı teklif platformuyla anında fiyat teklifi alıp, dakikalar içinde siparişinizi oluşturabilirsiniz! 🚀",
+  "detailsText": "Hızlı teklif sürecimiz sadece üç kolay adımdan oluşuyor:",
+  "steps": {
+    "1": {
+      "title": "Hızlı Dosya Yükleme",
+      "description": "CAD dosyalarınızı anında yükleyin (STEP, IGES veya DWG formatında)",
+      "tips": [
+        "Tüm teknik detayları içeren dosyalarınızı seçin",
+        "Standart CAD formatlarını kullanın",
+        "Özel gereksinimlerinizi belirtin"
+      ]
+    },
+    "2": {
+      "title": "Anında Teklif",
+      "description": "Dakikalar içinde detaylı fiyat teklifi alın",
+      "tips": [
+        "Malzeme türünü seçin",
+        "Üretim adedini belirtin",
+        "Özel isteklerinizi ekleyin"
+      ]
+    },
+    "3": {
+      "title": "Hemen Onaylayın",
+      "description": "Teklifinizi inceleyip hızlıca onaylayın",
+      "tips": [
+        "Teklif detaylarını kontrol edin",
+        "Tek tıkla onaylayın",
+        "Siparişiniz hemen işleme alınsın"
+      ]
+    }
+  },
+  "summarySteps": {
+    "1": "Dosyanızı Yükleyin ⚡",
+    "2": "Hemen Teklif Alın 📋",
+    "3": "Anında Onaylayın ✅"
+  },
+  "buttons": {
+    "details": "Hızlı Teklif Nasıl Alınır? 👉",
+    "order": "Hemen Teklif Alın ⚡",
+    "close": "Kapat ✕"
+  }
+}

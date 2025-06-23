@@ -160,49 +160,29 @@
     "robotics": "Robotik ve Makine İmalatı"
   },
   "onlineProcess": {
-    "title": "Online Sipariş Süreçi",
+    "title": "Siparişlerinizde Kısa Sürede Teklif Alma İmkanı! ",
+    "description": "Emir Otomat'ın yeni hızlı teklif platformuyla parça siparişlerinizi hızlı ve kolay bir şekilde fiyatlandırıp sipariş verebilirsiniz! 🚀",
     "step1": {
-      "title": "Modelinizi Yükleyin",
-      "desc": "3D modelinizi sistemimize yükleyin."
+      "title": "Tasarımınızı Yükleyin",
+      "desc": "Teknik çizimlerinizi veya CAD dosyalarınızı hemen yükleyin"
     },
     "step2": {
-      "title": "Sipariş Detaylarını Girin",
-      "desc": "Üretim teknolojisini, malzeme türünü ve yüzey işlemlerini seçin. Tolerans aralıklarını belirleyerek üretim sürecini özelleştirin."
+      "title": "Hızlı Teklif Alın",
+      "desc": "Tasarımınız için anında detaylı fiyat teklifi sunalım"
     },
     "step3": {
-      "title": "Siparişinizi Onaylayın",
-      "desc": "Üretim için gerekli tüm detayları kontrol edin ve siparişinizi onaylayın."
+      "title": "Hemen Onaylayın",
+      "desc": "Teklifinizi inceleyin ve tek tıkla onaylayın"
     },
     "step4": {
-      "title": "Parçalarınızı Teslim Alın",
-      "desc": "Üretilen parçalar kalite kontrolden geçtikten sonra adresinize teslim edilir."
+      "title": "Hızlı Teslimat",
+      "desc": "Siparişinizi en kısa sürede teslim edelim"
     },
-    "orderButton": "Online Sipariş İçin Tıklayınız",
+    "orderButton": "Hemen Teklif Alın ",
     "modal": {
-      "title": "Bilgilendirme",
-      "desc": "Üretilen parçalar kalite kontrolden geçtikten sonra adresinize teslim edilir.",
-      "orderButton": "Online Sipariş İçin Tıklayınız",
-      "modal": {
-        "title": "Bilgilendirme",
-        "desc": "Yapım aşamasındadır. Lütfen siparişlerinizi",
-        "closeButton": "Kapat"
-      },
-      "formTitle": "Siparişinizi Yükleyin",
-      "firstName": "Ad",
-      "lastName": "Soyad",
-      "companyName": "Şirket Adı",
-      "email": "E-posta",
-      "phone": "Telefon",
-      "material": "Malzeme",
-      "paymentOption": "Ödeme Seçeneği",
-      "description": "Sipariş Açıklaması",
-      "file": "Dosya Yükle",
-      "submitOrder": "Siparişi Gönder",
-      "popupTitle": "Sipariş Detayları",
-      "sendMail": "Mail Gönder",
-      "cancel": "İptal",
-      "selectMaterial": "Malzeme Seçin",
-      "selectPaymentOption": "Ödeme Seçeneği Seçin"
+      "title": "Hızlı Teklif",
+      "desc": "En kısa sürede size özel fiyat teklifi hazırlayacağız",
+      "closeButton": "Kapat"
     }
   },
   "uploadModel": {

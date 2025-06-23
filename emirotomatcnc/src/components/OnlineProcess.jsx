@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom"; // React Router'dan useNavigate import edildi
+import { useNavigate } from "react-router-dom";
 import "./OnlineProcess.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function OnlineProcess() {
   const { t } = useTranslation();
-  const navigate = useNavigate(); // useNavigate hook'u kullanılarak yönlendirme yapılacak
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   const steps = [
     {
@@ -32,29 +33,52 @@ function OnlineProcess() {
   ];
 
   const handleOrderClick = () => {
-    navigate("/upload-model"); // UploadOrder sayfasına yönlendir
+    navigate("/upload-model");
   };
 
   return (
     <section className="online-process">
-      <h2>{t("onlineProcess.title")}</h2>
-      <div className="process-steps">
-        {steps.map((step, index) => (
-          <div key={index} className="step">
-            <div className="icon">
-              <i className={step.icon}></i>
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center text-primary-blue mb-4">
+          {t("onlineProcess.title")}
+        </h2>
+        <p className="text-xl text-center text-gray-600 mb-12 max-w-4xl mx-auto">
+          {t("onlineProcess.description")}
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {steps.map((step, index) => (
+            <div key={index} className="step bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="icon-wrapper mb-4">
+                <i className={`${step.icon} text-4xl text-primary-blue`}></i>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+              <p className="text-gray-600">{step.desc}</p>
             </div>
-            <h3>{step.title}</h3>
-            <p>{step.desc}</p>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        <div className="order-button text-center mt-12">
+          <button 
+            onClick={handleOrderClick}
+            className="inline-flex items-center px-8 py-4 bg-primary-blue text-white font-semibold text-lg rounded-lg transition-all duration-300 hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue shadow-lg hover:shadow-xl"
+          >
+            {t("onlineProcess.orderButton")}
+            <i className="fas fa-bolt ml-2"></i>
+          </button>
+        </div>
       </div>
 
-      <div className="order-button">
-        <button onClick={handleOrderClick} className="btn">
-          {t("onlineProcess.orderButton")}
-        </button>
-      </div>
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>{t("onlineProcess.modal.title")}</h3>
+            <p>{t("onlineProcess.modal.desc")}</p>
+            <button className="close-btn" onClick={() => setShowModal(false)}>
+              {t("onlineProcess.modal.closeButton")}
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

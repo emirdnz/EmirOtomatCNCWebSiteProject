@@ -128,19 +128,17 @@ function App() {
           </div>
         ) : (
           <>
-            <Routes>
-              <Route path="/*" element={<Homepage />} exact />
+            <Routes>              <Route path="/" element={<Homepage />} />
+              <Route path="/anasayfa" element={<Homepage />} />
               <Route path="/hakkimizda" element={<About />} />
               <Route path="/calismalarimiz/urunler" element={<OurWorks />} />
               <Route path="/calismalarimiz/makine-parkuru" element={<Machines />} />
               <Route path="/sertifikalar" element={<Certificates />} />
-              {/* <Route path="/kalite" element={<Quality />} /> */}
               <Route path="/kariyer" element={<Career />} />
               <Route path="/staj" element={<Career />} />
               <Route path="/iletisim" element={<ContactUs />} />
-              {/* <Route path="/quote" element={<QuotePage />} /> */}
-              <Route path="/*" element={<OnlineProcess />} />
               <Route path="/upload-model" element={<UploadModel />} />
+              <Route path="*" element={<Homepage />} />
             </Routes>
             <Footer />
           </>

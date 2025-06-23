@@ -159,45 +159,30 @@
     "robotics": "Robotics & Machinery Manufacturing"
   },
   "onlineProcess": {
-    "title": "Online Order Process",
+    "title": "Get Quick Quotes for Your Orders in Minutes! ",
+    "description": "With Emir Otomat's new rapid quote platform, you can quickly price and order your parts with ease! 🚀",
     "step1": {
-      "title": "Upload Your Model",
-      "desc": "Upload your 3D model to our system."
+      "title": "Upload Your Design",
+      "desc": "Upload your technical drawings or CAD files instantly"
     },
     "step2": {
-      "title": "Enter Order Details",
-      "desc": "Select production technology, material type, and surface finishes. Customize the production process by specifying tolerance ranges."
+      "title": "Get Fast Quote",
+      "desc": "Receive detailed pricing quote for your design"
     },
     "step3": {
-      "title": "Confirm Your Order",
-      "desc": "Review all necessary details for production and confirm your order."
+      "title": "Quick Approval",
+      "desc": "Review and approve with one click"
     },
     "step4": {
-      "title": "Receive Your Parts",
-      "desc": "After quality control, the produced parts are delivered to your address."
+      "title": "Fast Delivery",
+      "desc": "Get your order delivered in record time"
     },
-    "orderButton": "Click Here for Online Order",
+    "orderButton": "Get Quick Quote ⚡",
     "modal": {
-      "title": "Information",
-      "desc": "Under construction. Please send your orders to",
+      "title": "Fast Quote",
+      "desc": "We'll prepare your custom price quote in no time",
       "closeButton": "Close"
-    },
-    "formTitle": "Upload Your Order",
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "companyName": "Company Name",
-    "email": "Email",
-    "phone": "Phone",
-    "material": "Material",
-    "paymentOption": "Payment Option",
-    "description": "Order Description",
-    "file": "Upload File",
-    "submitOrder": "Submit Order",
-    "popupTitle": "Order Details",
-    "sendMail": "Send Mail",
-    "cancel": "Cancel",
-    "selectMaterial": "Select Material",
-    "selectPaymentOption": "Select Payment Option"
+    }
   },
   "uploadModel": {
     "uploadTitle": "Upload Your File",
