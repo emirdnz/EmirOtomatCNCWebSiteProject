@@ -179,6 +179,8 @@
       "desc": "Siparişinizi en kısa sürede teslim edelim"
     },
     "orderButton": "Hemen Teklif Alın ",
+    "maintenanceMessage": "Sunucularımız bakım aşamasındadır. En yakında açılacaktır.",
+    "alternativeContact": "siparis@emirotomatcnc.com adresine tekliflerinizi yollayabilirsiniz",
     "modal": {
       "title": "Hızlı Teklif",
       "desc": "En kısa sürede size özel fiyat teklifi hazırlayacağız",

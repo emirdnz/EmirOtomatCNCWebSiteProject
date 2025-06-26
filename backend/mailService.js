@@ -16,7 +16,9 @@ app.use(cors({
     'https://emirotomatcnc.com',
     'https://www.emirotomatcnc.com',
     'https://emirotomatcnc.netlify.app',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://localhost:5173', // Vite development server
+    'http://127.0.0.1:5173', // Vite alternative
   ],
   credentials: true
 }));
@@ -253,15 +255,23 @@ app.post('/send-mail', upload.array('files', 5), async (req, res) => {
   }
 });
 
-// SSL yapılandırması
-const options = {
-  key: fs.readFileSync('/etc/letsencrypt/live/api.emirotomatcnc.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/api.emirotomatcnc.com/fullchain.pem'),
-  secureOptions: require('constants').SSL_OP_NO_TLSv1 | require('constants').SSL_OP_NO_TLSv1_1,
-  ciphers: 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256'
-};
+// Server başlatma - development vs production
+if (process.env.NODE_ENV === 'production') {
+  // SSL yapılandırması
+  const options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/api.emirotomatcnc.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/api.emirotomatcnc.com/fullchain.pem'),
+    secureOptions: require('constants').SSL_OP_NO_TLSv1 | require('constants').SSL_OP_NO_TLSv1_1,
+    ciphers: 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256'
+  };
 
-// Sadece 5000 portunu dinle, 443'ü Nginx ile yönetelim
-https.createServer(options, app).listen(process.env.PORT, () => {
-  console.log(`HTTPS Server ${process.env.PORT} portunda çalışıyor`);
-});
+  // HTTPS Server (Production)
+  https.createServer(options, app).listen(process.env.PORT || 5000, () => {
+    console.log(`HTTPS Server ${process.env.PORT || 5000} portunda çalışıyor`);
+  });
+} else {
+  // HTTP Server (Development)
+  app.listen(process.env.PORT || 5000, () => {
+    console.log(`HTTP Server ${process.env.PORT || 5000} portunda çalışıyor`);
+  });
+}
