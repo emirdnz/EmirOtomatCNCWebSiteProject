@@ -210,10 +210,32 @@ const UploadModel = () => {
 
       const response = await fetch(`${API_URL}/send-mail`, {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers: {
+          // Content-Type otomatik FormData için ayarlanır
+        }
       });
 
-      const result = await response.json();
+      // Network hatası durumunda response undefined olabilir
+      if (!response) {
+        throw new Error(
+          i18n.language === 'tr'
+            ? 'Sunucuya bağlanılamadı. İnternet bağlantınızı kontrol edin.'
+            : 'Cannot connect to server. Please check your internet connection.'
+        );
+      }
+
+      let result;
+      try {
+        result = await response.json();
+      } catch (parseError) {
+        // JSON parse hatası - sunucu yanıt veremedi
+        throw new Error(
+          i18n.language === 'tr'
+            ? 'Sunucudan geçersiz yanıt alındı. Lütfen tekrar deneyin.'
+            : 'Invalid response from server. Please try again.'
+        );
+      }
 
       if (!response.ok) {
         // Sunucu hatası için özel mesaj
@@ -236,9 +258,18 @@ const UploadModel = () => {
       setCustomer(INITIAL_CUSTOMER_STATE);
 
     } catch (error) {
+      // Network hataları için özel kontrol
+      let errorMessage = error.message;
+      
+      if (error.name === 'TypeError' && error.message.includes('fetch')) {
+        errorMessage = i18n.language === 'tr'
+          ? 'Sunucuya bağlanılamadı. İnternet bağlantınızı kontrol edin.'
+          : 'Cannot connect to server. Please check your internet connection.';
+      }
+      
       setNotification({
         type: 'error',
-        message: error.message
+        message: errorMessage
       });
     } finally {
       setIsLoading(false);

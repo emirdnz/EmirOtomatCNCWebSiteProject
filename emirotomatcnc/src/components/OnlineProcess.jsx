@@ -33,7 +33,7 @@ function OnlineProcess() {
   ];
 
   const handleOrderClick = () => {
-    navigate("/upload-model");
+    // navigate("/upload-model"); // Bakım modu - geçici olarak devre dışı
   };
 
   return (
@@ -60,11 +60,42 @@ function OnlineProcess() {
         <div className="order-button text-center mt-12">
           <button 
             onClick={handleOrderClick}
-            className="inline-flex items-center px-8 py-4 bg-primary-blue text-white font-semibold text-lg rounded-lg transition-all duration-300 hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue shadow-lg hover:shadow-xl"
+            disabled={true}
+            className="inline-flex items-center px-8 py-4 bg-gray-400 text-white font-semibold text-lg rounded-lg cursor-not-allowed opacity-70 shadow-lg"
+            title={t("onlineProcess.maintenanceMessage")}
           >
             {t("onlineProcess.orderButton")}
-            <i className="fas fa-bolt ml-2"></i>
+            <i className="fas fa-tools ml-2"></i>
           </button>
+          
+          {/* Bakım mesajı */}
+          <div className="maintenance-message mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="flex items-center justify-center mb-3">
+              <i className="fas fa-exclamation-triangle text-yellow-600 mr-2"></i>
+              <span className="text-yellow-800 font-medium">
+                {t("onlineProcess.maintenanceMessage")}
+              </span>
+            </div>
+            
+            {/* Email alternatifi */}
+            <div className="bg-blue-50 border border-blue-200 rounded-md p-3 mt-3">
+              <div className="flex items-center justify-center">
+                <i className="fas fa-envelope text-blue-600 mr-2"></i>
+                <span className="text-blue-800 font-medium text-sm">
+                  {t("onlineProcess.alternativeContact")}
+                </span>
+              </div>
+              <div className="text-center mt-2">
+                <a 
+                  href="mailto:siparis@emirotomatcnc.com" 
+                  className="inline-flex items-center text-blue-700 hover:text-blue-900 font-semibold text-sm transition-colors duration-200"
+                >
+                  <i className="fas fa-paper-plane mr-1"></i>
+                  siparis@emirotomatcnc.com
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

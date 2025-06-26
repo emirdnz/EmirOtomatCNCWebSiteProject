@@ -22,8 +22,8 @@ function HomepageContainer() {
       <ExperienceSection />
       {/* OurWorks Section */}
       <OurWorksSection />
-      {/* Order Popup */}
-      <OrderPopup />
+      {/* Order Popup
+      <OrderPopup /> */}
     </div>
   );
 }

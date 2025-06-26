@@ -178,6 +178,8 @@
       "desc": "Get your order delivered in record time"
     },
     "orderButton": "Get Quick Quote ",
+    "maintenanceMessage": "Our servers are under maintenance. They will be available soon.",
+    "alternativeContact": "You can send your quote requests to siparis@emirotomatcnc.com",
     "modal": {
       "title": "Fast Quote",
       "desc": "We'll prepare your custom price quote in no time",
