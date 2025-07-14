@@ -32,6 +32,7 @@
   "ourWorksSection": {
     "title": "Çalışmalarımız",
     "description": "Mobilya Sektörü, Ev Aletleri, Tıbbi Malzemeler, Aydınlatma Parçaları, Otomotiv Parçaları, Klima Parçaları, Doğalgaz Parçaları ve Savunma Sanayisi gibi çeşitli sektörlere özel çözümler üretiyoruz.",
+    "viewMore": "Daha fazlası için →",
     "work1": {
       "title": "Sarı (PİRİNÇ) Malzemeler",
       "desc": "Açıklama"
@@ -106,7 +107,8 @@
     "qualitiesDescription": "Yeniliklere açık, araştırmacı bir ruha sahip, düzenli çalışmayı benimseyen ve takım odaklı çalışma anlayışında olan çalışma arkadaşları arıyoruz.",
     "applyDescription": "Eğer siz de bu niteliklere sahipseniz ve ekibimize katılmak istiyorsanız, aşağıdaki formu doldurarak iş veya staj başvurusunda bulunabilirsiniz.",
     "jobFormTitle": "İş Başvuru Formu",
-    "internshipFormTitle": "Staj Başvuru Formu"
+    "internshipFormTitle": "Staj Başvuru Formu",
+    "englishFormNotice": "İngilizce form üzerinde çalışıyoruz. Bu süreçte Türkçe formu kullanabilir veya bizimle doğrudan e-posta yoluyla iletişime geçebilirsiniz."
   },
   "contactUs": {
     "title": "İletişim",
@@ -180,7 +182,7 @@
     },
     "orderButton": "Hemen Teklif Alın ",
     "maintenanceMessage": "Sunucularımız bakım aşamasındadır. En yakında açılacaktır.",
-    "alternativeContact": "siparis@emirotomatcnc.com adresine tekliflerinizi yollayabilirsiniz",
+    "alternativeContact": "<strong>siparis@emirotomatcnc.com</strong> adresine tekliflerinizi yollayabilirsiniz",
     "modal": {
       "title": "Hızlı Teklif",
       "desc": "En kısa sürede size özel fiyat teklifi hazırlayacağız",

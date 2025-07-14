@@ -1,0 +1,22 @@
+/* Logo styles for dark mode */
+.logo-dark-mode {
+  filter: brightness(1.1) contrast(1.1);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for logo */
+.logo-container:hover .logo-dark-mode {
+  filter: brightness(1.2) contrast(1.2);
+}
+
+/* Logo container for adding a subtle background in dark mode */
+.dark .logo-container {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+
+.dark .logo-container:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}

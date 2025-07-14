@@ -1,10 +1,22 @@
 .jotform-form > body{
     margin: 0; /* Remove default margin */
 }
-.jotform-form >iframe{      
+.jotform-form > iframe{      
     display: block !important;  /* iframes are inline by default */   
     height: 100vh !important;  /* Set height to 100% of the viewport height */   
     width: 100vw !important;  /* Set width to 100% of the viewport width */     
     border: none !important; /* Remove default border */
      /* Just for styling */
+}
+
+/* Dark mode adjustments for the Jotform iframe */
+.jotform-dark {
+    filter: invert(85%) hue-rotate(180deg);
+}
+
+/* Fix images and colors that shouldn't be inverted in dark mode */
+.jotform-dark img,
+.jotform-dark video,
+.jotform-dark [style*="background-image"] {
+    filter: invert(100%) hue-rotate(180deg);
 }

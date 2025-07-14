@@ -1,0 +1,94 @@
+/* Dark mode image enhancements */
+.dark-mode-image {
+  /* Base styling for all images in dark mode */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Apply to images with white backgrounds in dark mode */
+.dark .dark-mode-image {
+  /* Reduce brightness and contrast for softer appearance */
+  filter: brightness(0.95) contrast(1.02) saturate(0.95);
+  
+  /* Add a subtle border */
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  
+  /* Apply a subtle inner shadow to help define the image edges */
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.1),
+    0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Add background styling */
+  background: linear-gradient(to bottom, rgba(31, 41, 55, 0.2), rgba(17, 24, 39, 0.2));
+  
+  /* Add padding inside the border */
+  padding: 8px;
+  
+  /* Subtle border radius */
+  border-radius: 4px;
+}
+
+/* Special class for images with predominantly white backgrounds */
+.dark .white-bg-image {
+  /* Additional adjustments for white background images */
+  filter: brightness(0.9) contrast(1.0) saturate(0.9) blur(0.3px);
+  background: linear-gradient(to bottom, rgba(31, 41, 55, 0.3), rgba(17, 24, 39, 0.3));
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  box-shadow: 
+    inset 0 0 15px rgba(0, 0, 0, 0.2),
+    0 5px 8px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+}
+
+/* Hover effect for SVG logo in dark mode */
+.dark .dark-mode-svg-logo:hover {
+  background: linear-gradient(to bottom, rgba(31, 41, 55, 0.7), rgba(17, 24, 39, 0.7));
+  border-color: rgba(75, 85, 99, 0.6);
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+/* Dialog/modal specific enhancements */
+.dark .dark-mode-dialog-image {
+  /* More pronounced border for modal images */
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  
+  /* Add padding for modal images */
+  padding: 12px;
+  
+  /* Subtle drop shadow for depth */
+  filter: brightness(0.95) contrast(1.02) saturate(0.95) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+  
+  /* Enhance the background gradient */
+  background: linear-gradient(to bottom, rgba(31, 41, 55, 0.3), rgba(17, 24, 39, 0.3));
+}
+
+/* ISO logo (and other SVG logo) enhancements for dark mode */
+.dark .dark-mode-svg-logo {
+  /* Apply subtle background */
+  background: linear-gradient(to bottom, rgba(31, 41, 55, 0.5), rgba(17, 24, 39, 0.5));
+  
+  /* Add padding and rounded corners */
+  padding: 8px;
+  border-radius: 6px;
+  
+  /* Add a subtle border */
+  border: 1px solid rgba(75, 85, 99, 0.4);
+  
+  /* Apply gentle shadow */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  
+  /* Smooth transition for hover effects */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effects for interactive images */
+.dark .dark-mode-image:hover {
+  /* Slightly brighten on hover */
+  filter: brightness(1.05) contrast(1.02) saturate(0.95);
+  
+  /* Enhance border */
+  border-color: rgba(107, 114, 128, 0.5);
+  
+  /* Subtle scale effect */
+  transform: scale(1.01);
+}

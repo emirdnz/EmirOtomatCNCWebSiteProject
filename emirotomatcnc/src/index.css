@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dark mode styles */
+:root {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Optimize white background images in dark mode */
+.dark img {
+  transition: filter 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
@@ -17,7 +36,53 @@
 .swiper-slide-active> img{
   transform: scale(1.2);
   transition: transform 1.5s ease;
+}
 
+/* Dark mode carousel button styles */
+.dark-carousel button[data-testid="carousel-left-control"],
+.dark-carousel button[data-testid="carousel-right-control"] {
+  background-color: #3b82f6 !important; /* Blue color */
+  color: white !important;
+  opacity: 0.8 !important;
+  transition: all 0.3s ease !important;
+  border-radius: 50% !important; /* Perfect circle */
+  width: 40px !important; /* Fixed width */
+  height: 40px !important; /* Fixed height */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important; /* Remove padding */
+  border: none !important;
+}
+
+.dark-carousel button[data-testid="carousel-left-control"]:hover,
+.dark-carousel button[data-testid="carousel-right-control"]:hover {
+  background-color: #2563eb !important; /* Darker blue on hover */
+  opacity: 1 !important;
+  transform: scale(1.05) !important; /* Slight scale effect */
+}
+
+/* Ensure the SVG icons fit properly inside the circle */
+.dark-carousel button[data-testid="carousel-left-control"] svg,
+.dark-carousel button[data-testid="carousel-right-control"] svg {
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+}
+
+/* Dark mode carousel indicators */
+.dark-carousel button[data-testid*="carousel-indicator"] {
+  background-color: #3b82f6 !important; /* Blue indicators */
+  opacity: 0.6 !important;
+  border-radius: 50% !important;
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.dark-carousel button[data-testid*="carousel-indicator"][aria-current="true"] {
+  background-color: #1d4ed8 !important; /* Active indicator darker blue */
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
 }
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

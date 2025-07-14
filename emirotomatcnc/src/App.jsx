@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Spinner } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
+import "./styles/animations.css";
 import Header from "./components/Header";
 import Homepage from "./pages/homepage/Homepage";
 import About from "./pages/about/About";
@@ -16,6 +17,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Machines from "./pages/Machines";
 import { ThemeProvider } from "@material-tailwind/react";
 import UploadModel from "./pages/UploadModel";
+import { ThemeProvider as CustomThemeProvider } from "./contexts/ThemeContext";
 
 function App() {
 
@@ -116,35 +118,37 @@ function App() {
   const [loading] = useState(false);
 
   return (
-    <ThemeProvider value={theme}>
-      <div className="font-montserrat font-medium">
-        {/* {window.location.pathname == "/" ? null : <Navbar />} */}
-        <Header />
-        <ScrollToTop />
+    <CustomThemeProvider>
+      <ThemeProvider value={theme}>
+        <div className="font-montserrat font-medium bg-white dark:bg-[#2A2A2A] text-gray-900 dark:text-dark-text transition-colors duration-300">
+          {/* {window.location.pathname == "/" ? null : <Navbar />} */}
+          <Header />
+          <ScrollToTop />
 
-        {loading ? (
-          <div className="flex justify-center items-center  h-[80vh] ">
-            <Spinner className="h-12 w-12" color="blue" />
-          </div>
-        ) : (
-          <>
-            <Routes>              <Route path="/" element={<Homepage />} />
-              <Route path="/anasayfa" element={<Homepage />} />
-              <Route path="/hakkimizda" element={<About />} />
-              <Route path="/calismalarimiz/urunler" element={<OurWorks />} />
-              <Route path="/calismalarimiz/makine-parkuru" element={<Machines />} />
-              <Route path="/sertifikalar" element={<Certificates />} />
-              <Route path="/kariyer" element={<Career />} />
-              <Route path="/staj" element={<Career />} />
-              <Route path="/iletisim" element={<ContactUs />} />
-              <Route path="/upload-model" element={<UploadModel />} />
-              <Route path="*" element={<Homepage />} />
-            </Routes>
-            <Footer />
-          </>
-        )}
-      </div>
-    </ThemeProvider>
+          {loading ? (
+            <div className="flex justify-center items-center  h-[80vh] ">
+              <Spinner className="h-12 w-12" color="blue" />
+            </div>
+          ) : (
+            <>
+              <Routes>              <Route path="/" element={<Homepage />} />
+                <Route path="/anasayfa" element={<Homepage />} />
+                <Route path="/hakkimizda" element={<About />} />
+                <Route path="/calismalarimiz/urunler" element={<OurWorks />} />
+                <Route path="/calismalarimiz/makine-parkuru" element={<Machines />} />
+                <Route path="/sertifikalar" element={<Certificates />} />
+                <Route path="/kariyer" element={<Career />} />
+                <Route path="/staj" element={<Career />} />
+                <Route path="/iletisim" element={<ContactUs />} />
+                <Route path="/upload-model" element={<UploadModel />} />
+                <Route path="*" element={<Homepage />} />
+              </Routes>
+              <Footer />
+            </>
+          )}
+        </div>
+      </ThemeProvider>
+    </CustomThemeProvider>
   );
 }
 

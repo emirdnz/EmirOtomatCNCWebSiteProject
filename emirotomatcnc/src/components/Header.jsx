@@ -20,6 +20,10 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { SquaresPlusIcon, UserGroupIcon } from "@heroicons/react/24/solid";
 
 import logo from "../../public/logo.png";
+import logoDark from "../assets/logo for dark.png";
+import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "../contexts/ThemeContext";
+import "../styles/logo.css"; // Logo stilleri için import
 
 const navListMenuItems = [
   [
@@ -67,7 +71,7 @@ function NavListMenu(props) {
             <Typography
               variant="h6"
               color="blue-gray"
-              className="p-0 flex items-center text-sm font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue"
+              className="p-0 flex items-center text-sm font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
             >
               {t(`nav.${title}`)}
             </Typography>
@@ -91,10 +95,10 @@ function NavListMenu(props) {
             as="li"
             variant="h6"
             color="blue-gray"
-            className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue"
+            className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
           >
             <ListItem
-              className="flex items-center gap-2 py-2 pr-4"
+              className="flex items-center gap-2 py-2 pr-4 text-gray-900 dark:text-dark-text hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary-blue dark:hover:text-blue-400"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -114,8 +118,8 @@ function NavListMenu(props) {
             </ListItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden max-w-screen-xl rounded-xl lg:block ">
-          <ul className="outline-none outline-0 ">{renderItems}</ul>
+        <MenuList className="hidden max-w-screen-xl rounded-xl lg:block bg-white dark:bg-[#2A2A2A] border dark:border-gray-700">
+          <ul className="outline-none outline-0">{renderItems}</ul>
         </MenuList>
       </Menu>
       <div className="block lg:hidden">
@@ -134,7 +138,7 @@ function NavList() {
           as="li"
           variant="h6"
           color="blue-gray"
-          className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue"
+          className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
         >
           {t("nav.home")}
         </Typography>
@@ -144,7 +148,7 @@ function NavList() {
           as="li"
           variant="h6"
           color="blue-gray"
-          className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue"
+          className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
         >
           {t("nav.about")}
         </Typography>
@@ -157,16 +161,20 @@ function NavList() {
           as="li"
           variant="h6"
           color="blue-gray"
-          className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue"
+          className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
         >
           {t("nav.contact")}
         </Typography>
       </Link>
+      <div className="flex items-center ml-4">
+        <ThemeToggle />
+      </div>
     </List>
   );
 }
 
 function Header() {
+  const { theme } = useTheme();
   const [langStorage, setLangStorage] = useState(
     localStorage.getItem("language")
   );
@@ -174,6 +182,7 @@ function Header() {
   const [openWorks, setOpenWorks] = useState(false);
   const [openQuality, setOpenQuality] = useState(false);
   const [openCareer, setOpenCareer] = useState(false);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -184,38 +193,53 @@ function Header() {
         setOpenWorks(false);
       }
     });
+    
+    // Dil değişikliğini dinleyelim
+    const handleLanguageChange = () => {
+      setCurrentLang(localStorage.getItem('language') || 'tr');
+    };
+    
+    // Event listener ekleyelim
+    document.addEventListener('languageChanged', handleLanguageChange);
+    
+    // Cleanup
+    return () => {
+      document.removeEventListener('languageChanged', handleLanguageChange);
+    };
   }, []);
 
   const { i18n } = useTranslation();
+  const [currentLang, setCurrentLang] = useState(localStorage.getItem('language') || 'tr');
 
   const handleLanguageChange = (lang) => {
     //TODO: disable button when language is already selected
-    window.location.reload(); // Refresh the page after changing the language
+    // window.location.reload(); // Refresh the page after changing the language (Bu satırı kaldırıyoruz)
     i18n.changeLanguage(lang);
     localStorage.setItem("language", lang); // Save language to localStorage
+    setCurrentLang(lang); // State'i güncelleyelim
   };
 
   return (
     <>
-      <nav className=" border-b-2 border-slate-200 bg-slate-100 dark:bg-gray-900">
+      <nav className="border-b border-slate-200 bg-slate-100 dark:bg-[#1A1A1A] dark:border-gray-800">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-2 leading-8">
-          <div>
+          <div className="flex items-center gap-2">
             <button
-              className={`text-sm  text-gray-500 dark:text-white  ${
-                langStorage === "tr" ? "text-primary-blue font-bold" : "hover:underline hover:font-bold"
+              className={`text-sm ${
+                currentLang === "tr" ? "text-primary-blue font-bold" : "text-gray-500 dark:text-white hover:underline hover:font-bold"
               }`}
               onClick={() => handleLanguageChange("tr")}
               style={{ marginRight: "10px" }}
-              disabled={langStorage === "tr"}
+              disabled={currentLang === "tr"}
             >
               TR
             </button>
             <button
-              className={`text-sm  text-gray-500 dark:text-white  ${
-                langStorage === "en" ? "text-primary-blue font-bold" : "hover:underline"
+              className={`text-sm ${
+                currentLang === "en" ? "text-primary-blue font-bold" : "text-gray-500 dark:text-white hover:underline"
               }`}
               onClick={() => handleLanguageChange("en")}
-              disabled={langStorage === "en"}
+              disabled={currentLang === "en"}
             >
               EN
             </button>
@@ -293,13 +317,17 @@ function Header() {
           </div>
         </div>
       </nav>
-      <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-3 py-3">
-        <div className="flex items-center max-w-screen-xl mx-auto justify-between text-blue-gray-900">
+      <Navbar className="sticky top-0 z-50 h-max max-w-full rounded-none px-3 py-2 bg-white dark:bg-[#1A1A1A] border-b dark:border-gray-800 shadow-sm dark:shadow-none">
+        <div className="flex items-center max-w-screen-xl mx-auto justify-between text-blue-gray-900 dark:text-dark-text">
           <Link
             to="/"
-            className="mr-4 cursor-pointer  font-medium flex items-center space-x-3 rtl:space-x-reverse"
+            className="mr-4 cursor-pointer font-medium flex items-center space-x-3 rtl:space-x-reverse logo-container"
           >
-            <img src={logo} className="h-16" alt="Logo" />
+            <img 
+              src={isDarkMode ? logoDark : logo} 
+              className={`h-14 transition-all duration-300 ${isDarkMode ? 'logo-dark-mode' : ''}`} 
+              alt="Logo" 
+            />
           </Link>
           <div className="flex items-center gap-4">
             <div className="hidden lg:block">

@@ -1,17 +1,19 @@
 import { Typography } from "@material-tailwind/react";
 import { Carousel } from "flowbite-react";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "../contexts/ThemeContext";
 
 import carousel1 from "../assets/Carousel-1.jpg";
 import carousel2 from "../assets/Carousel-2.jpg";
 
 function HomeCarousel() {
   const { t } = useTranslation();
+  const { isDarkMode } = useTheme();
   const images = [carousel1, carousel2]
   const data = t('carouselData', { returnObjects: true });
 
   return (
-    <section id="carousel">
+    <section id="carousel" className={isDarkMode ? 'dark-carousel' : ''}>
       <Carousel
         className="h-[30rem]"
         loop={true}

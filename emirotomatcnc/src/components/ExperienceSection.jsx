@@ -1,26 +1,29 @@
 import { Typography } from "@material-tailwind/react";
-import { useTranslation,Trans } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
+import "../styles/darkModeImages.css";
+import { useTheme } from "../contexts/ThemeContext";
 
 function ExperienceSection() {
   const { t } = useTranslation();
+  const { isDarkMode } = useTheme();
   return (
     <>
-      <section className="h-full md:h-[30rem] flex flex-col items-center justify-center my-16 md:my-0">
+      <section className="h-full md:h-[30rem] flex flex-col items-center justify-center my-16 md:my-0 bg-white dark:bg-[#2A2A2A]">
         <div className="h-full w-full md:max-w-screen-xl md:flex flex-col justify-center item-center">
           <div className="flex justify-center items-center h-full">
             <Typography
               variant="h4"
               color="gray"
-              className="mb-4 text-2xl md:text-3xl lg:text-4xl font-montserrat text-end font-light"
+              className="mb-4 text-2xl md:text-3xl lg:text-4xl font-montserrat text-end font-light text-gray-700 dark:text-gray-300"
             >
               {t('experienceSection.title')} <br />{" "}
               <span className="font-semibold text-primary-blue">{t('experienceSection.subtitle')}</span>
             </Typography>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-row md:item-center md:h-full md:border-y-2">
-            <div className="md:flex md:flex-col p-10 py-14 mx-4 sm:m-0 group border-2 md:border-r-2 md:border-l-0 md:border-y-0 md:w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-row md:item-center md:h-full md:border-y-2 dark:border-gray-600">
+            <div className="md:flex md:flex-col p-10 py-14 mx-4 sm:m-0 group border-2 md:border-r-2 md:border-l-0 md:border-y-0 md:w-full dark:border-gray-600">
               <div>
-                <span>
+                <span className="inline-block">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 192.756 192.756"
@@ -52,7 +55,7 @@ function ExperienceSection() {
                 </h3>
               </div>
             </div>
-            <div className="md:flex md:flex-col p-10 py-14 mx-4 sm:m-0 group border-2 md:border-r-2 md:border-l-0 md:border-y-0  md:w-full">
+            <div className="md:flex md:flex-col p-10 py-14 mx-4 sm:m-0 group border-2 md:border-r-2 md:border-l-0 md:border-y-0 md:w-full dark:border-gray-600">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +75,7 @@ function ExperienceSection() {
                 </h3>
               </div>
             </div>
-            <div className="md:flex md:flex-col p-10 py-14 mx-4 sm:m-0 group border-2 md:border-r-2 md:border-l-0 md:border-y-0 md:w-full">
+            <div className="md:flex md:flex-col p-10 py-14 mx-4 sm:m-0 group border-2 md:border-r-2 md:border-l-0 md:border-y-0 md:w-full dark:border-gray-600">
               <div>
                 <span>
                   <svg
@@ -96,7 +99,7 @@ function ExperienceSection() {
                 </h3>
               </div>
             </div>
-            <div className="md:flex md:flex-col p-10 py-14 mx-4 sm:m-0 group border-2 md:border-none md:w-full">
+            <div className="md:flex md:flex-col p-10 py-14 mx-4 sm:m-0 group border-2 md:border-none md:w-full dark:border-gray-600">
               <div>
                 <span>
                   <svg

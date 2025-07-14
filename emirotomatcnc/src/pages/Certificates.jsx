@@ -35,7 +35,7 @@ function Certificates() {
   const { t } = useTranslation();
 
   return (
-    <section className="flex items-center justify-center flex-col my-10">
+    <section className="flex items-center justify-center flex-col my-10 bg-white dark:bg-[#2A2A2A] text-gray-900 dark:text-dark-text">
       {/* title */}
       <TitleComponent title={t("certificates")} cover={cover} />
       {/* title */}

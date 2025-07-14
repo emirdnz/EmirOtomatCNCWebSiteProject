@@ -5,14 +5,14 @@ import {motion} from "framer-motion";
 function TitleComponent({ title, cover }) {
   return (
     <div className="w-full">
-      <h1 className="text-2xl font-semibold mb-8 text-primary-blue w-full">
+      <h1 className="text-2xl font-semibold mb-8 text-primary-blue dark:text-gray-400 w-full">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ease: "easeInOut", duration: 1 }}
           className="w-full text-center"
         >
-          {"//"} <span className="text-black">{title}</span>
+          {"//"} <span className="text-black dark:text-gray-200">{title}</span>
         </motion.div>
       </h1>
       <div className="h-96 w-full">
