@@ -44,9 +44,9 @@ function IndustriesSection() {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50 dark:bg-[#2A2A2A]">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-dark-text">
           {t("industries.title")}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -55,10 +55,10 @@ function IndustriesSection() {
             return (
               <div
                 key={index}
-                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="flex flex-col items-center p-6 bg-white dark:bg-[#333333] rounded-lg shadow-md hover:shadow-lg transition-shadow border dark:border-gray-700"
               >
-                <IconComponent className="text-4xl mb-4 text-blue-500" />
-                <h3 className="text-lg font-semibold text-center">{industry.title}</h3>
+                <IconComponent className="text-4xl mb-4 text-blue-500 dark:text-blue-400" />
+                <h3 className="text-lg font-semibold text-center text-gray-900 dark:text-dark-text">{industry.title}</h3>
               </div>
             );
           })}

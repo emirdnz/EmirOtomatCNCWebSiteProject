@@ -1,0 +1,17 @@
+/* Navbar z-index düzenlemesi */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* İçerik bölümü için z-index düzenlemesi */
+.content-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark mode geçiş animasyonu */
+body {
+  transition: background-color 0.3s ease;
+}

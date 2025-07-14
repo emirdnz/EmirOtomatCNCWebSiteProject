@@ -6,20 +6,20 @@ function ContactUs() {
   const { t } = useTranslation();
 
   return (
-    <div className="flex items-center justify-center flex-col my-10">
+    <div className="flex items-center justify-center flex-col my-10 bg-white dark:bg-[#2A2A2A] text-gray-900 dark:text-dark-text">
       {/* title */}
       <TitleComponent title={t("contactUs.title")} cover={cover} />
       {/* title */}
       <div className="flex flex-wrap mt-10 max-w-screen-xl">
-        <div className="lg:min-w-[424px] max-w-96 flex flex-col min-h-64 border-b-[1px] xl:border-x-[1px] p-8">
+        <div className="lg:min-w-[424px] max-w-96 flex flex-col min-h-64 border-b-[1px] xl:border-x-[1px] p-8 border-gray-200 dark:border-gray-600">
           <div className="text-3xl text-primary-blue my-5">
             {t("contactUs.office")}
           </div>
-          <span className="">
+          <span className="text-gray-700 dark:text-gray-300">
             {t("contactUs.address")}
           </span>
         </div>
-        <div className="lg:min-w-[300px] max-w-96 flex flex-col min-h-64 border-b-[1px] xl:border-x-[1px] p-8">
+        <div className="lg:min-w-[300px] max-w-96 flex flex-col min-h-64 border-b-[1px] xl:border-x-[1px] p-8 border-gray-200 dark:border-gray-600">
           <div className="text-3xl text-primary-blue my-5">
             {t("contactUs.phone")}
           </div>

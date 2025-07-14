@@ -8,7 +8,7 @@ function OurWorksContainer({ data, cover }) {
   return (
     <>
       <TitleComponent title={t("ourWorksContainer.title")} cover={cover} />
-      <section className="w-full mx-auto flex justify-center my-10">
+      <section className="w-full mx-auto flex justify-center my-10 dark:bg-[#2A2A2A] transition-colors duration-300">
         <WorkCard data={data} />
       </section>
     </>

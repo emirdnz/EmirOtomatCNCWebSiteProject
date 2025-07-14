@@ -4,7 +4,7 @@ function History() {
   const { t } = useTranslation();
 
   return (
-    <div className="md:w-1/2 border-b-[1px]">
+    <div className="md:w-1/2 border-b-[1px] dark:border-gray-700 bg-white dark:bg-[#2A2A2A]">
       <ol className="relative border-s border-gray-200 dark:border-gray-700 pt-20 ml-4">
         <li className="mb-10 ms-4 group">
           <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>

@@ -8,6 +8,7 @@ module.exports = withMT({
     "./src/**/*.{js,ts,jsx,tsx}",
     "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
+  darkMode: 'class',
   plugins: [require("flowbite/plugin")],
   theme: {
     fontFamily: {
@@ -16,6 +17,9 @@ module.exports = withMT({
     extend: {
       colors: {
         "primary-blue": "#427fda",
+        "dark-bg": "#1a1a1a",
+        "dark-surface": "#2a2a2a",
+        "dark-text": "#e5e5e5",
       },
     },
   },

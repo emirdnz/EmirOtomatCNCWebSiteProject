@@ -8,7 +8,7 @@ function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className=" bg-[#232a34] text-white">
+    <footer className="bg-[#232a34] dark:bg-[#1A1A1A] text-white dark:text-dark-text">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 lg:px-0">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0 flex flex-row md:block">
@@ -16,19 +16,19 @@ function Footer() {
               <img src={logo} className="h-[64px] me-3" alt="Logo" />
             </a>
             <div>
-              <div className=" w-52 opacity-45 text-sm m-2 mt-5">
+              <div className=" w-52 opacity-45 text-sm m-2 mt-5 dark:text-gray-300">
                 <Trans i18nKey="footer.address"></Trans>
               </div>
               <div className=" w-52 text-gray-400 text-sm mx-2 hover:underline">
                 Tel:
                 <a href="tel:02126711740">
-                  <span className="text-white ml-2">{t("footer.tel")}</span>
+                  <span className="text-white dark:text-gray-300 ml-2">{t("footer.tel")}</span>
                 </a>
               </div>
               <div className=" w-52 text-gray-400 text-sm m-2 mb-0  hover:underline">
                 Mail:
                 <a href="mailto:info@emirotomatcnc.com">
-                  <span className="text-white ml-2">
+                  <span className="text-white dark:text-gray-300 ml-2">
                     {t("footer.email")}
                   </span>
                 </a>
@@ -37,8 +37,8 @@ function Footer() {
           </div>
           <div></div>
           <div className="grid grid-cols-3 gap-8 md:gap-6 md:grid-cols-3">
-            <div className="border-r-2 pr-6 border-opacity-40 border-[#7f8b9c]">
-              <h2 className="mb-6 text-md font-semibold  pb-1 border-b-2 border-primary-blue">
+            <div className="border-r-2 pr-6 border-opacity-40 border-[#7f8b9c] dark:border-gray-700">
+              <h2 className="mb-6 text-md font-semibold pb-1 border-b-2 border-primary-blue dark:border-gray-600">
               {t("footer.corporate")}
               </h2>
               <ul className="font-medium">
@@ -55,8 +55,8 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="border-r-2 pr-6 border-opacity-40 border-[#7f8b9c]">
-              <h2 className="mb-6 text-md font-semibold  pb-1 border-b-2 border-primary-blue">
+            <div className="border-r-2 pr-6 border-opacity-40 border-[#7f8b9c] dark:border-gray-700">
+              <h2 className="mb-6 text-md font-semibold pb-1 border-b-2 border-primary-blue dark:border-gray-600">
               {t("footer.production")}
               </h2>
               <ul className="font-medium">
@@ -90,7 +90,7 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-md font-semibold  pb-1 border-b-2 border-primary-blue">
+              <h2 className="mb-6 text-md font-semibold pb-1 border-b-2 border-primary-blue dark:border-gray-600">
               {t("footer.career")}
               </h2>
               <ul className="font-medium">
@@ -110,7 +110,7 @@ function Footer() {
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-2" />
         <div className="sm:flex sm:items-center sm:justify-between px-2">
-          <span className="text-sm  sm:text-center ">
+          <span className="text-sm sm:text-center dark:text-gray-300">
             © 2025{" "}
             <a
               href="https://emirotomatcnc.com/"

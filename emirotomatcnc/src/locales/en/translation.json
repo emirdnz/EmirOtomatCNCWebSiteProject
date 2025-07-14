@@ -32,6 +32,7 @@
   "ourWorksSection": {
     "title": "Our Works",
     "description": "We produce special solutions for various sectors such as Furniture Industry, Home Appliances, Medical Supplies, Lighting Parts, Automotive Parts, Air Conditioning Parts, Natural Gas Parts, and Defense Industry.",
+    "viewMore": "View more →",
     "work1": {
       "title": "Yellow (BRASS) Materials",
       "desc": "Description"
@@ -106,7 +107,8 @@
     "qualitiesDescription": "We are looking for team members who are open to innovations, have a research-oriented mindset, are organized, and adopt a team-focused approach.",
     "applyDescription": "If you have these qualities and would like to join our team, you can fill out the form below to apply for a job or internship.",
     "jobFormTitle": "Job Application Form",
-    "internshipFormTitle": "Internship Application Form"
+    "internshipFormTitle": "Internship Application Form",
+    "englishFormNotice": "We are working on the English version of this form. Meanwhile, you can use the Turkish form or contact us directly via email."
   },
   "contactUs": {
     "title": "Contact Us",
@@ -179,7 +181,7 @@
     },
     "orderButton": "Get Quick Quote ",
     "maintenanceMessage": "Our servers are under maintenance. They will be available soon.",
-    "alternativeContact": "You can send your quote requests to siparis@emirotomatcnc.com",
+    "alternativeContact": "You can send your quote requests to <strong>siparis@emirotomatcnc.com</strong>",
     "modal": {
       "title": "Fast Quote",
       "desc": "We'll prepare your custom price quote in no time",

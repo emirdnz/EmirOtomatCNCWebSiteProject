@@ -28,4 +28,16 @@ i18n
     }
   });
 
+// Dil değiştiğinde gerçekleşecek olay
+i18n.on('languageChanged', (lng) => {
+  // Dil değiştiğinde localStorage'a kaydet
+  localStorage.setItem('language', lng);
+  
+  // Gerekli DOM olaylarını tetikleyelim, böylece bileşenler güncellenir
+  document.dispatchEvent(new Event('languageChanged'));
+  
+  // Sayfa yenilemesinden kaçınmak için burada dil değişim işlemlerini yapabiliriz
+  // Fakat tema (dark/light mode) ayarını değiştirmeyelim
+});
+
 export default i18n;
