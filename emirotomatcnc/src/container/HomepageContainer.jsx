@@ -16,8 +16,8 @@ function HomepageContainer() {
       <IndustriesSection />
       {/* About Section */}
       <AboutSection />
-      {/* Production Process Section */}
-      <OnlineProcess />
+      {/* Production Process Section - Geçici olarak kaldırıldı
+      <OnlineProcess /> */}
       {/* Experience Section */}
       <ExperienceSection />
       {/* OurWorks Section */}

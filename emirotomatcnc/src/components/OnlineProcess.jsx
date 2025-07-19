@@ -8,34 +8,6 @@ function OnlineProcess() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const [showMaintenance, setShowMaintenance] = useState(false);
-  
-  // Bakım mesajı üzerindeki vurgulamayı yönetme
-  const handleMaintenanceHover = (isHovered) => {
-    setShowMaintenance(isHovered);
-    
-    // Bakım kutusu animasyonu
-    const maintenanceBox = document.getElementById('maintenance-box');
-    const emailBox = document.querySelector('#maintenance-box > div:last-child');
-    
-    if (maintenanceBox) {
-      if (isHovered) {
-        maintenanceBox.classList.add('highlight-box');
-        maintenanceBox.style.transform = 'translateY(-3px)';
-        if (emailBox) {
-          emailBox.style.transform = 'translateY(-2px)';
-          emailBox.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.3)';
-        }
-      } else {
-        maintenanceBox.classList.remove('highlight-box');
-        maintenanceBox.style.transform = 'translateY(0)';
-        if (emailBox) {
-          emailBox.style.transform = 'translateY(0)';
-          emailBox.style.boxShadow = 'none';
-        }
-      }
-    }
-  };
 
   const steps = [
     {
@@ -61,7 +33,7 @@ function OnlineProcess() {
   ];
 
   const handleOrderClick = () => {
-    // navigate("/upload-model"); // Bakım modu - geçici olarak devre dışı
+    navigate("/upload-model"); // Upload model sayfasına yönlendir
   };
 
   return (
@@ -86,61 +58,14 @@ function OnlineProcess() {
         </div>
 
         <div className="order-button text-center mt-12">
-          <div 
-            className="relative inline-block"
-            onMouseEnter={() => handleMaintenanceHover(true)}
-            onMouseLeave={() => handleMaintenanceHover(false)}
-          >
-            <button 
-              onClick={handleOrderClick}
-              disabled={true}
-              className="inline-flex items-center px-8 py-4 bg-blue-500/50 text-white font-semibold text-lg rounded-lg cursor-help opacity-85 shadow-lg dark:bg-blue-700/60 dark:text-gray-100 border border-blue-300/50 dark:border-blue-500/30 transition-all duration-300"
-            >
-              {t("onlineProcess.orderButton")}
-              <i className="fas fa-tools ml-2 text-blue-300 dark:text-blue-300"></i>
-            </button>
-          
-          </div>
-          
-          {/* 
-            // This will be the active button after maintenance is complete:
-            <button 
+          <button 
               onClick={handleOrderClick}
               className="inline-flex items-center px-8 py-4 bg-primary-blue text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-600 transition-all duration-300 dark:bg-primary-blue dark:hover:bg-blue-600"
             >
               {t("onlineProcess.orderButton")}
               <i className="fas fa-arrow-right ml-2"></i>
             </button>
-          */}
-          
-          {/* Bakım mesajı */}
-          <div id="maintenance-box" className="maintenance-message mt-8 p-5 bg-blue-50/50 dark:bg-blue-900/20 border-2 border-blue-300/70 dark:border-blue-700/50 rounded-lg shadow-lg transition-all duration-500">
-            <div className="flex items-center justify-center mb-3">
-              <i className="fas fa-exclamation-triangle text-primary-blue dark:text-primary-blue mr-2 text-xl"></i>
-              <span className="text-blue-800 dark:text-blue-200 font-medium text-lg">
-                {t("onlineProcess.maintenanceMessage")}
-              </span>
-            </div>
-            
-            {/* Email alternatifi */}
-            <div className="bg-blue-50/70 dark:bg-blue-900/30 border border-blue-300/70 dark:border-blue-700/50 rounded-md p-4 mt-3 transition-all duration-300">
-              <div className="flex items-center justify-center">
-                <i className="fas fa-envelope text-primary-blue dark:text-primary-blue mr-2 text-lg"></i>
-                <span className="text-blue-800 dark:text-blue-200 font-medium text-md">
-                  <Trans i18nKey="onlineProcess.alternativeContact" />
-                </span>
-              </div>
-              <div className="text-center mt-2">
-                <a 
-                  href="mailto:siparis@emirotomatcnc.com" 
-                  className="inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-800/30 rounded-md text-primary-blue dark:text-primary-blue hover:bg-blue-200 dark:hover:bg-blue-800/50 font-semibold text-sm transition-all duration-200"
-                >
-                  <i className="fas fa-paper-plane mr-1 text-primary-blue dark:text-primary-blue"></i>
-                  <span className="text-primary-blue dark:text-primary-blue">siparis@emirotomatcnc.com</span>
-                </a>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
 
