@@ -166,9 +166,18 @@ function NavList() {
           {t("nav.contact")}
         </Typography>
       </Link>
-      <div className="flex items-center ml-4">
-        <ThemeToggle />
-      </div>
+ <div className="flex items-center ml-4 gap-3">
+  <a 
+    href="https://panel.emirotomatcnc.com" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <button className="bg-primary-blue text-white text-sm font-bold font-montserrat px-3 py-1.5 rounded-lg hover:opacity-90 transition duration-300">
+      Yönetim Paneli
+    </button>
+  </a>
+  <ThemeToggle />
+</div>
     </List>
   );
 }
