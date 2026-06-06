@@ -21,7 +21,6 @@ import { SquaresPlusIcon, UserGroupIcon } from "@heroicons/react/24/solid";
 
 import logo from "../../public/logo.png";
 import logoDark from "../assets/logo for dark.png";
-import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "../contexts/ThemeContext";
 import "../styles/logo.css"; // Logo stilleri için import
 
@@ -166,24 +165,11 @@ function NavList() {
           {t("nav.contact")}
         </Typography>
       </Link>
- <div className="flex items-center ml-4 gap-3">
-  <a 
-    href="https://panel.emirotomatcnc.com" 
-    target="_blank" 
-    rel="noopener noreferrer"
-  >
-    <button className="bg-primary-blue text-white text-sm font-bold font-montserrat px-3 py-1.5 rounded-lg hover:opacity-90 transition duration-300">
-      Yönetim Paneli
-    </button>
-  </a>
-  <ThemeToggle />
-</div>
     </List>
   );
 }
 
 function Header() {
-  const { theme } = useTheme();
   const [langStorage, setLangStorage] = useState(
     localStorage.getItem("language")
   );
