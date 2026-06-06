@@ -111,7 +111,7 @@ function Footer() {
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-2" />
         <div className="sm:flex sm:items-center sm:justify-between px-2">
           <span className="text-sm sm:text-center dark:text-gray-300">
-            © 2025{" "}
+            © 2026{" "}
             <a
               href="https://emirotomatcnc.com/"
               className="hover:underline text-xs"
