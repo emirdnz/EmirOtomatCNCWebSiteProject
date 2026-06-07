@@ -12,53 +12,25 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
+  // Force light theme only. Do not use system preference.
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Tema ayarını localStorage'dan yükleme fonksiyonu
-  const loadThemeFromStorage = () => {
-    // Check if user has a saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(prefersDark);
-    }
-  };
-
   useEffect(() => {
-    // İlk yüklemede tema ayarını al
-    loadThemeFromStorage();
-    
-    // Dil değiştiğinde tema ayarını koruyalım
-    const handleLanguageChanged = () => {
-      // Tema ayarını değiştirmeden koruyalım
-      // Burada hiçbir şey yapmıyoruz, böylece tema değişmez
-    };
-    
-    // i18n'in dil değişikliği olayını dinleyelim
-    i18n.on('languageChanged', handleLanguageChanged);
-    
-    // Cleanup
-    return () => {
-      i18n.off('languageChanged', handleLanguageChanged);
-    };
+    // Ensure no 'dark' class is present and persist light preference
+    document.documentElement.classList.remove('dark');
+    try {
+      localStorage.setItem('theme', 'light');
+    } catch (e) {
+      // ignore storage errors
+    }
+    // Remove any i18n listener usage — keep behavior simple
+    return () => {};
   }, []);
 
-  useEffect(() => {
-    // Apply theme to document
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
+  // Make toggle a no-op so UI components using it won't break
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    // intentionally do nothing; theme is forced light
+    setIsDarkMode(false);
   };
 
   const value = {
