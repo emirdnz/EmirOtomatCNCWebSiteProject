@@ -8,7 +8,8 @@ module.exports = withMT({
     "./src/**/*.{js,ts,jsx,tsx}",
     "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
-  darkMode: 'class',
+  // Disable Tailwind dark mode variants since the app will use light theme only
+  darkMode: false,
   plugins: [require("flowbite/plugin")],
   theme: {
     fontFamily: {

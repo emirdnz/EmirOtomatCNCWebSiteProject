@@ -20,8 +20,6 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { SquaresPlusIcon, UserGroupIcon } from "@heroicons/react/24/solid";
 
 import logo from "../../public/logo.png";
-import logoDark from "../assets/logo for dark.png";
-import { useTheme } from "../contexts/ThemeContext";
 import "../styles/logo.css"; // Logo stilleri için import
 
 const navListMenuItems = [
@@ -177,7 +175,7 @@ function Header() {
   const [openWorks, setOpenWorks] = useState(false);
   const [openQuality, setOpenQuality] = useState(false);
   const [openCareer, setOpenCareer] = useState(false);
-  const { isDarkMode } = useTheme();
+  // Theme is forced to light; no runtime theme flag needed
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -318,10 +316,10 @@ function Header() {
             to="/"
             className="mr-4 cursor-pointer font-medium flex items-center space-x-3 rtl:space-x-reverse logo-container"
           >
-            <img 
-              src={isDarkMode ? logoDark : logo} 
-              className={`h-14 transition-all duration-300 ${isDarkMode ? 'logo-dark-mode' : ''}`} 
-              alt="Logo" 
+            <img
+              src={logo}
+              className="h-14 transition-all duration-300"
+              alt="Logo"
             />
           </Link>
           <div className="flex items-center gap-4">
