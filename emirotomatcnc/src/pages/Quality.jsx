@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import cover from "../assets/2008.jpg";
+import cover from "@/assets/2008.jpg";
 
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ import {
   CardFooter,
   Typography,
 } from "@material-tailwind/react";
-import TitleComponent from "../components/TitleComponent";
+import TitleComponent from "@/components/common/TitleComponent";
 
 function Quality() {
   const [open, setOpen] = useState(true);
@@ -26,15 +26,15 @@ function Quality() {
     setOpen((cur) => !cur);
   };
   return (
-    <section className="flex items-center justify-center flex-col my-10 bg-white dark:bg-[#2A2A2A] text-gray-900 dark:text-dark-text">
+    <section className="flex items-center justify-center flex-col my-10 bg-white text-gray-900">
       {/* title */}
       <TitleComponent title="Kalite Parkurumuz" cover={cover} />
       {/* title */}
       <div className="flex flex-col items-center justify-center h-[30vh] px-4">
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-dark-text mb-4">
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">
           Yapım Aşamasında
         </h1>
-        <p className="text-gray-600 dark:text-gray-300 text-lg mb-8">
+        <p className="text-gray-600 text-lg mb-8">
           Yakın zamanda tekrar kontrol ediniz.
         </p>
       </div>

@@ -4,11 +4,11 @@ import { useTranslation } from "react-i18next";
 
 import { motion } from "framer-motion";
 
-import cover from "../assets/2008.jpg";
-import certificate1 from "../assets/certificates/9001.jpg";
-import certificate2 from "../assets/certificates/14001.jpg";
-import certificate3 from "../assets/certificates/10002.jpg";
-import certificate4 from "../assets/certificates/31000.jpg";
+import cover from "@/assets/2008.jpg";
+import certificate1 from "@/assets/certificates/9001.jpg";
+import certificate2 from "@/assets/certificates/14001.jpg";
+import certificate3 from "@/assets/certificates/10002.jpg";
+import certificate4 from "@/assets/certificates/31000.jpg";
 
 const data = [
   { image: certificate1, title: "TS EN ISO 9001:2015" },
@@ -18,7 +18,7 @@ const data = [
 ];
 
 import { Dialog, DialogBody } from "@material-tailwind/react";
-import TitleComponent from "../components/TitleComponent";
+import TitleComponent from "@/components/common/TitleComponent";
 
 function Certificates() {
   const [open, setOpen] = useState(false);
@@ -35,7 +35,7 @@ function Certificates() {
   const { t } = useTranslation();
 
   return (
-    <section className="flex items-center justify-center flex-col my-10 bg-white dark:bg-[#2A2A2A] text-gray-900 dark:text-dark-text">
+    <section className="flex items-center justify-center flex-col my-10 bg-white text-gray-900">
       {/* title */}
       <TitleComponent title={t("certificates")} cover={cover} />
       {/* title */}

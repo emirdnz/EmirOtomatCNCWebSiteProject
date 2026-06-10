@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import Goals from "../components/Goals";
-import VisionMission from "../components/VisionMission";
-import History from "../components/History";
+import Goals from "@/components/Goals";
+import VisionMission from "@/components/VisionMission";
+import History from "@/components/History";
 
-import AboutSection from "../components/AboutSection";
-import TitleComponent from "../components/TitleComponent";
+import AboutSection from "@/components/AboutSection";
+import TitleComponent from "@/components/common/TitleComponent";
 import { useTranslation } from "react-i18next";
 
 function AboutContainer({ cover }) {

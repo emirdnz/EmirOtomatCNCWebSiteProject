@@ -2,23 +2,20 @@ import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Spinner } from "@material-tailwind/react";
 import { useTranslation } from "react-i18next";
-import "./App.css";
-import "./styles/animations.css";
-import Header from "./components/Header";
-import Homepage from "./pages/homepage/Homepage";
-import About from "./pages/about/About";
-import OurWorks from "./pages/ourworks/OurWorks";
-import Career from "./pages/Career";
-import Certificates from "./pages/Certificates";
-import Footer from "./components/Footer";
-import ContactUs from "./pages/ContactUs";
-import OnlineProcess from "./components/OnlineProcess";
-import ScrollToTop from "./components/ScrollToTop";
-import Machines from "./pages/Machines";
+import "@/App.css";
+import "@/styles/animations.css";
+import Header from "@/components/layout/Header";
+import Homepage from "@/pages/Homepage";
+import About from "@/pages/About";
+import OurWorks from "@/pages/OurWorks";
+import Career from "@/pages/Career";
+import Certificates from "@/pages/Certificates";
+import Footer from "@/components/layout/Footer";
+import ContactUs from "@/pages/ContactUs";
+import ScrollToTop from "@/components/common/ScrollToTop";
+import Machines from "@/pages/Machines";
 import { ThemeProvider } from "@material-tailwind/react";
-import UploadModel from "./pages/UploadModel";
-import { ThemeProvider as CustomThemeProvider } from "./contexts/ThemeContext";
-
+import UploadModel from "@/pages/UploadModel";
 function App() {
 
   const { i18n } = useTranslation();
@@ -118,9 +115,8 @@ function App() {
   const [loading] = useState(false);
 
   return (
-    <CustomThemeProvider>
       <ThemeProvider value={theme}>
-        <div className="font-montserrat font-medium bg-white dark:bg-[#2A2A2A] text-gray-900 dark:text-dark-text transition-colors duration-300">
+        <div className="font-montserrat font-medium bg-transparent text-gray-900">
           {/* {window.location.pathname == "/" ? null : <Navbar />} */}
           <Header />
           <ScrollToTop />
@@ -148,7 +144,6 @@ function App() {
           )}
         </div>
       </ThemeProvider>
-    </CustomThemeProvider>
   );
 }
 

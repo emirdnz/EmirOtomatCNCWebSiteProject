@@ -1,4 +1,4 @@
-import HomepageContainer from "../../container/HomepageContainer";
+import HomepageContainer from "@/layouts/HomepageContainer";
 
 function Homepage() {
   return (

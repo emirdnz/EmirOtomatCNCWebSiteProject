@@ -39,20 +39,20 @@ function OnlineProcess() {
   return (
     <section className="online-process">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-primary-blue dark:text-gray-200 mb-4">
+        <h2 className="text-4xl font-bold text-center text-primary-blue mb-4">
           {t("onlineProcess.title")}
         </h2>
-        <p className="text-xl text-center text-gray-600 dark:text-gray-400 mb-12 max-w-4xl mx-auto">
+        <p className="text-xl text-center text-gray-600 mb-12 max-w-4xl mx-auto">
           {t("onlineProcess.description")}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
-            <div key={index} className="step bg-white dark:bg-[#333333] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="icon-wrapper mb-4 dark:bg-[#444444]">
-                <i className={`${step.icon} text-4xl text-primary-blue dark:text-primary-blue`}></i>
+            <div key={index} className="step bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="icon-wrapper mb-4">
+                <i className={`${step.icon} text-4xl text-primary-blue`}></i>
               </div>
-              <h3 className="text-xl font-semibold mb-3 dark:text-gray-200">{step.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{step.desc}</p>
+              <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+              <p className="text-gray-600">{step.desc}</p>
             </div>
           ))}
         </div>
@@ -60,7 +60,7 @@ function OnlineProcess() {
         <div className="order-button text-center mt-12">
           <button 
               onClick={handleOrderClick}
-              className="inline-flex items-center px-8 py-4 bg-primary-blue text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-600 transition-all duration-300 dark:bg-primary-blue dark:hover:bg-blue-600"
+              className="inline-flex items-center px-8 py-4 bg-primary-blue text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-600 transition-all duration-300"
             >
               {t("onlineProcess.orderButton")}
               <i className="fas fa-arrow-right ml-2"></i>

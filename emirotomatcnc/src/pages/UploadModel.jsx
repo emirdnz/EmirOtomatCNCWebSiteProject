@@ -4,9 +4,9 @@ import { BsCalendar, BsCheckCircle, BsXCircle } from 'react-icons/bs';
 import DatePicker, { registerLocale } from "react-datepicker";
 import tr from 'date-fns/locale/tr';
 import "react-datepicker/dist/react-datepicker.css";
-import '../styles/animations.css'; 
-import OrderSummaryModal from '../components/OrderSummaryModal';
-import { API_URL } from '../config/api';
+import "@/styles/animations.css";
+import OrderSummaryModal from "@/components/OrderSummaryModal";
+import { API_URL } from "@/config/api";
 
 // Türkçe lokalizasyonu kaydet
 registerLocale('tr', tr);
