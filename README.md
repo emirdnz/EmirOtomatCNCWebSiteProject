@@ -54,7 +54,7 @@ Altyapı:
 
 # 🇬🇧 ENGLISH VERSION
 
-# Emir Otomat CNC - Digital Transformation Project (2021-2025)
+# Emir Otomat CNC - Digital Transformation Project (2021-2026)
 
 ## Project Overview
 Complete digital transformation from WordPress to modern React-based architecture, enhancing user experience and system performance.
