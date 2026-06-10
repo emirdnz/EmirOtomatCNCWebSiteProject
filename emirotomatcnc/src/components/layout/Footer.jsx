@@ -19,6 +19,14 @@ function Footer() {
                   <span className="text-white ml-2 hover:text-primary-blue transition-colors duration-200">{t("footer.tel")}</span>
                 </a>
               </div>
+              <div className="w-64 md:w-80 text-gray-400 text-sm mx-2 mt-2 hover:underline">
+                WhatsApp:
+                <a href="https://wa.me/905011066206" target="_blank" rel="noopener noreferrer">
+                  <span className="text-white ml-2 hover:text-[#25D366] transition-colors duration-200">
+                    +90 501 106 62 06 (Görkem Deniz)
+                  </span>
+                </a>
+              </div>
               <div className="w-64 md:w-80 text-gray-400 text-sm m-2 mb-0 hover:underline">
                 Mail:
                 <a href="mailto:info@emirotomatcnc.com">
