@@ -19,8 +19,8 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { SquaresPlusIcon, UserGroupIcon } from "@heroicons/react/24/solid";
 
-import logo from "../../public/logo.png";
-import "../styles/logo.css"; // Logo stilleri için import
+import logo from "/logo.png";
+import "@/styles/logo.css";
 
 const navListMenuItems = [
   [
@@ -68,7 +68,7 @@ function NavListMenu(props) {
             <Typography
               variant="h6"
               color="blue-gray"
-              className="p-0 flex items-center text-sm font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
+              className="p-0 flex items-center text-sm font-semibold font-montserrat transition-colors duration-200 hover:text-primary-blue text-gray-800 py-1"
             >
               {t(`nav.${title}`)}
             </Typography>
@@ -92,30 +92,30 @@ function NavListMenu(props) {
             as="li"
             variant="h6"
             color="blue-gray"
-            className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
+            className="p-0 font-bold font-montserrat transition-colors duration-200 hover:text-primary-blue text-gray-900"
           >
             <ListItem
-              className="flex items-center gap-2 py-2 pr-4 text-gray-900 dark:text-dark-text hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary-blue dark:hover:text-blue-400"
+              className="flex items-center gap-1.5 py-2 pr-4 text-gray-900 hover:bg-primary-blue-light hover:text-primary-blue rounded-lg"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
               {props.title}
               <ChevronDownIcon
                 strokeWidth={2.5}
-                className={`hidden h-3 w-3 transition-transform duration-700 lg:block ${
-                  isMenuOpen ? "rotate-180" : ""
+                className={`hidden h-3 w-3 transition-transform duration-300 lg:block ${
+                  isMenuOpen ? "rotate-180 text-primary-blue" : ""
                 }`}
               />
               <ChevronDownIcon
                 strokeWidth={2.5}
-                className={`block h-3 w-3 transition-transform duration-700 lg:hidden ${
-                  isMobileMenuOpen ? "rotate-180" : ""
+                className={`block h-3 w-3 transition-transform duration-300 lg:hidden ${
+                  isMobileMenuOpen ? "rotate-180 text-primary-blue" : ""
                 }`}
               />
             </ListItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden max-w-screen-xl rounded-xl lg:block bg-white dark:bg-[#2A2A2A] border dark:border-gray-700">
+        <MenuList className="hidden max-w-screen-xl rounded-xl lg:block bg-white border border-border-soft shadow-card-hover p-2">
           <ul className="outline-none outline-0">{renderItems}</ul>
         </MenuList>
       </Menu>
@@ -129,39 +129,24 @@ function NavListMenu(props) {
 function NavList() {
   const { t } = useTranslation();
   return (
-    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
-      <Link to="/anasayfa" className="flex items-center mx-2">
-        <Typography
-          as="li"
-          variant="h6"
-          color="blue-gray"
-          className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
-        >
+    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1 lg:gap-1">
+      <Link to="/anasayfa">
+        <ListItem className="flex items-center px-3 py-2 rounded-lg text-gray-900 hover:bg-primary-blue-light hover:text-primary-blue font-bold font-montserrat text-sm transition-colors duration-200">
           {t("nav.home")}
-        </Typography>
+        </ListItem>
       </Link>
-      <Link to="/hakkimizda" className="flex items-center mx-2">
-        <Typography
-          as="li"
-          variant="h6"
-          color="blue-gray"
-          className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
-        >
+      <Link to="/hakkimizda">
+        <ListItem className="flex items-center px-3 py-2 rounded-lg text-gray-900 hover:bg-primary-blue-light hover:text-primary-blue font-bold font-montserrat text-sm transition-colors duration-200">
           {t("nav.about")}
-        </Typography>
+        </ListItem>
       </Link>
       <NavListMenu data={navListMenuItems[0]} title={t("nav.works")} />
       <NavListMenu data={navListMenuItems[1]} title={t("nav.quality")} />
       <NavListMenu data={navListMenuItems[2]} title={t("nav.career")} />
-      <Link to="/iletisim" className="flex items-center mx-2">
-        <Typography
-          as="li"
-          variant="h6"
-          color="blue-gray"
-          className="p-0 font-bold font-montserrat transition duration-700 ease-in-out hover:text-primary-blue dark:hover:text-blue-400 text-gray-900 dark:text-dark-text"
-        >
+      <Link to="/iletisim">
+        <ListItem className="flex items-center px-3 py-2 rounded-lg text-gray-900 hover:bg-primary-blue-light hover:text-primary-blue font-bold font-montserrat text-sm transition-colors duration-200">
           {t("nav.contact")}
-        </Typography>
+        </ListItem>
       </Link>
     </List>
   );
@@ -214,22 +199,28 @@ function Header() {
 
   return (
     <>
-      <nav className="border-b border-slate-200 bg-slate-100 dark:bg-[#1A1A1A] dark:border-gray-800">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-2 leading-8">
-          <div className="flex items-center gap-2">
+      <nav className="top-bar relative overflow-hidden">
+        {/* Accent çizgisi */}
+        <div className="h-0.5 w-full bg-gradient-to-r from-primary-blue via-primary-blue-dark to-primary-blue absolute top-0 left-0" />
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 py-1.5 leading-8">
+          <div className="flex items-center gap-1">
             <button
-              className={`text-sm ${
-                currentLang === "tr" ? "text-primary-blue font-bold" : "text-gray-500 dark:text-white hover:underline hover:font-bold"
+              className={`text-xs px-2 py-0.5 rounded transition-all duration-200 ${
+                currentLang === "tr"
+                  ? "text-white bg-primary-blue font-bold"
+                  : "text-text-muted hover:text-primary-blue hover:bg-primary-blue-light"
               }`}
               onClick={() => handleLanguageChange("tr")}
-              style={{ marginRight: "10px" }}
               disabled={currentLang === "tr"}
             >
               TR
             </button>
+            <span className="text-border-strong text-xs">|</span>
             <button
-              className={`text-sm ${
-                currentLang === "en" ? "text-primary-blue font-bold" : "text-gray-500 dark:text-white hover:underline"
+              className={`text-xs px-2 py-0.5 rounded transition-all duration-200 ${
+                currentLang === "en"
+                  ? "text-white bg-primary-blue font-bold"
+                  : "text-text-muted hover:text-primary-blue hover:bg-primary-blue-light"
               }`}
               onClick={() => handleLanguageChange("en")}
               disabled={currentLang === "en"}
@@ -239,7 +230,7 @@ function Header() {
           </div>
           <div className="flex items-center space-x-6 rtl:space-x-reverse">
             <div className="flex items-center text-primary-blue">
-              <span className="text-sm  text-gray-500 dark:text-white hover:underline">
+              <span className="text-sm text-gray-500 hover:underline">
                 <a
                   href="tel:02126711740"
                   className="flex items-center ml-2 transition duration-700 ease-in-out hover:text-primary-blue"
@@ -263,7 +254,7 @@ function Header() {
               </span>
               <a
                 href="mailto:info@emirotomatcnc.com"
-                className="text-sm  text-gray-500 dark:text-white hover:underline"
+                className="text-sm text-gray-500 hover:underline"
               >
                 <span className="flex items-center ml-2 line-clamp-1 transition duration-700 ease-in-out hover:text-primary-blue">
                   <svg
@@ -287,7 +278,7 @@ function Header() {
               </a>
               <a
                 href="https://maps.app.goo.gl/69vrJ4qrDz3UmQ9y6"
-                className="text-sm  text-gray-500 dark:text-white hover:underline"
+                className="text-sm text-gray-500 hover:underline"
                 target="_blank"
               >
                 <span className="flex items-center ml-2 line-clamp-1 transition duration-700 ease-in-out hover:text-primary-blue">
@@ -310,8 +301,8 @@ function Header() {
           </div>
         </div>
       </nav>
-      <Navbar className="sticky top-0 z-50 h-max max-w-full rounded-none px-3 py-2 bg-white dark:bg-[#1A1A1A] border-b dark:border-gray-800 shadow-sm dark:shadow-none">
-        <div className="flex items-center max-w-screen-xl mx-auto justify-between text-blue-gray-900 dark:text-dark-text">
+      <Navbar className="nav-bar border-0" fullWidth>
+        <div className="flex items-center max-w-screen-xl mx-auto justify-between text-blue-gray-900">
           <Link
             to="/"
             className="mr-4 cursor-pointer font-medium flex items-center space-x-3 rtl:space-x-reverse logo-container"

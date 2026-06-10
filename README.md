@@ -1,6 +1,6 @@
 # 🇹🇷 TÜRKÇE VERSİYON
 
-# Emir Otomat CNC - Dijital Dönüşüm Projesi (2021-2025)
+# Emir Otomat CNC - Dijital Dönüşüm Projesi (2021-2026)
 
 ## Proje Genel Bakış
 WordPress'ten modern React tabanlı mimariye tam kapsamlı dijital dönüşüm, kullanıcı deneyimini ve sistem performansını iyileştirme.

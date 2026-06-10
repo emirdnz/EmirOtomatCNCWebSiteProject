@@ -15,17 +15,17 @@ function AboutSection() {
   return (
     <>
       {location.pathname !== "/hakkimizda" ? (
-        <section className="h-96 flex-col flex items-center justify-center w-full bg-white dark:bg-[#2A2A2A]">
+        <section className="h-96 flex-col flex items-center justify-center w-full bg-white">
           <Card className="h-full overflow-hidden flex flex-row justify-center w-full shadow-transparent rounded-none bg-transparent">
             <CardHeader
               floated={false}
               shadow={false}
               color="transparent"
-              className="m-0 rounded-none flex justify-center md:justify-end bg-blue-gray-50 dark:bg-[#333333] pr-5 pt-16 w-full h-full text-4xl text-primary-blue"
+              className="m-0 rounded-none flex justify-center md:justify-end bg-blue-gray-50 pr-5 pt-16 w-full h-full text-4xl text-primary-blue"
             >
               <h1 className="text-center md:text-end font-bold max-w-lg text-pretty">
                 {t("aboutSection.title")}<br/>
-                <span className="text-gray-800 dark:text-dark-text font-semibold text-pretty leading-[50px] ">
+                <span className="text-gray-800 font-semibold text-pretty leading-[50px]">
                  <Trans i18nKey="aboutSection.subtitle"></Trans> 
                 </span>
                 <br />
@@ -41,11 +41,11 @@ function AboutSection() {
               <Typography
                 variant="lead"
                 color="gray"
-                className="mb-3 font-normal overflow-scroll no-scrollbar max-w-lg font-montserrat text-base md:text-lg lg:text-lg text-gray-600 dark:text-gray-300"
+                className="mb-3 font-normal overflow-scroll no-scrollbar max-w-lg font-montserrat text-base md:text-lg lg:text-lg text-gray-600"
               >
                 {t("aboutSection.description1")}
               </Typography>
-              <Link className="text-primary-blue hover:text-blue-600 dark:hover:text-blue-400" to="/hakkimizda">
+              <Link className="text-primary-blue hover:text-blue-600" to="/hakkimizda">
                 {" "}
                 {t("continue")}
               </Link>
@@ -53,17 +53,17 @@ function AboutSection() {
           </Card>
         </section>
       ) : (
-        <section className=" h-full md:h-[450px]  flex-col flex items-center justify-center w-full bg-white dark:bg-[#2A2A2A]">
+        <section className="h-full md:h-[450px] flex-col flex items-center justify-center w-full bg-white">
           <Card className="h-full overflow-hidden flex flex-row justify-center w-full shadow-transparent rounded-none">
             <CardHeader
               floated={false}
               shadow={false}
               color="transparent"
-              className="m-0 rounded-none hidden md:flex justify-center md:justify-end bg-blue-gray-50 dark:bg-[#333333] pr-5 pt-36 w-full h-full text-4xl text-primary-blue"
+              className="m-0 rounded-none hidden md:flex justify-center md:justify-end bg-blue-gray-50 pr-5 pt-36 w-full h-full text-4xl text-primary-blue"
             >
               <h1 className="text-center w-full md:text-end font-bold max-w-lg text-pretty">
                 {t("aboutSection.title")}<br/>
-                <span className="text-gray-800 dark:text-gray-200 font-semibold text-pretty leading-[50px] ">
+                <span className="text-gray-800 font-semibold text-pretty leading-[50px]">
                 <Trans i18nKey="aboutSection.subtitle"/> 
                 </span>
                 <br />
@@ -75,7 +75,7 @@ function AboutSection() {
                 </Link>
               </h1>
             </CardHeader>
-            <CardBody className="p-0 pl-5 pt-6 pb-6 md:pt-5 md:pb-0 my-auto flex flex-col items-center md:items-start justify-evenly w-full bg-white dark:bg-[#2A2A2A]">
+            <CardBody className="p-0 pl-5 pt-6 pb-6 md:pt-5 md:pb-0 my-auto flex flex-col items-center md:items-start justify-evenly w-full bg-white">
               <Typography
                 variant="h3"
                 className="text-center md:hidden font-montserrat md:text-end font-bold max-w-lg text-pretty text-primary-blue mb-2"
@@ -85,7 +85,7 @@ function AboutSection() {
               <Typography
                 variant="lead"
                 color="gray"
-                className=" font-normal overflow-scroll no-scrollbar min-h max-w-lg pb-10 font-montserrat text-md text-pretty text-gray-700 dark:text-gray-300"
+                className="font-normal overflow-scroll no-scrollbar min-h max-w-lg pb-10 font-montserrat text-md text-pretty text-gray-700"
               >
                 <Trans i18nKey="aboutSection.description2" />
                 <br />

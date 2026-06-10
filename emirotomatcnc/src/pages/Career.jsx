@@ -1,16 +1,14 @@
-import cover from "../assets/2006.jpg";
+import cover from "@/assets/2006.jpg";
 import { motion } from "framer-motion";
-import image from "../assets/career.jpg";
+import image from "@/assets/career.jpg";
 import "./Career.css";
-import TitleComponent from "../components/TitleComponent";
+import TitleComponent from "@/components/common/TitleComponent";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "../contexts/ThemeContext";
 import { useEffect, useState } from "react";
 
 function Career() {
   const { t, i18n } = useTranslation();
   const location = window.location.pathname;
-  const { isDarkMode } = useTheme();
   const [formUrl, setFormUrl] = useState("");
   
   // İş başvuru ve staj başvuru formlarının ID'leri - Türkçe
@@ -57,7 +55,7 @@ function Career() {
   }, [i18n.language, formUrl]);
 
   return (
-    <div className="mt-10 bg-white dark:bg-[#2A2A2A] text-gray-900 dark:text-dark-text">
+    <div className="mt-10 page-surface">
       {/* title */}
       <TitleComponent
         title={location === "/kariyer" ? t("career.title") : t("career.internshipTitle")}
@@ -69,7 +67,7 @@ function Career() {
           <div className="max-w-[480px] hidden md:block">
             <img src={image} alt="" />
           </div>
-          <div className="m-10 md:my-10 text-gray-700 dark:text-gray-300">
+          <div className="m-10 md:my-10 text-gray-700">
             {t("career.description")}
             <h3 className="text-sm font-bold my-4 w-full">
               <motion.div
@@ -78,7 +76,7 @@ function Career() {
                 transition={{ ease: "easeInOut", duration: 1 }}
                 className="w-full"
               >
-                <span className="text-black dark:text-dark-text">
+                <span className="text-black">
                   {t("career.qualitiesTitle")}
                 </span>
               </motion.div>
@@ -98,7 +96,7 @@ function Career() {
             transition={{ ease: "easeInOut", duration: 1 }}
             className="w-full text-center"
           >
-            <span className="text-black dark:text-white">
+            <span className="text-black">
               {location === "/kariyer"
                 ? t("career.jobFormTitle")
                 : t("career.internshipFormTitle")}
@@ -108,8 +106,8 @@ function Career() {
       </div>
       <div className="jotform-form">
         {i18n.language === "en" && (jobFormIdEN === jobFormIdTR) && (
-          <div className="text-center p-4 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-300 dark:border-yellow-700 rounded-md mb-4 mx-4 max-w-3xl md:mx-auto">
-            <p className="text-yellow-800 dark:text-yellow-200">
+          <div className="text-center p-4 bg-yellow-50 border border-yellow-300 rounded-md mb-4 mx-4 max-w-3xl md:mx-auto">
+            <p className="text-yellow-800">
               {t("career.englishFormNotice")}
             </p>
           </div>
@@ -127,9 +125,9 @@ function Career() {
             minWidth: "100%",
             height: "100%",
             border: "none",
-            backgroundColor: isDarkMode ? "#2A2A2A" : "#FFFFFF",
+            backgroundColor: "#FFFFFF",
           }}
-          className={`overflow-hidden w-full min-h-[1500px] md:min-h-[1300px] ${isDarkMode ? 'jotform-dark' : ''}`}
+          className="overflow-hidden w-full min-h-[1500px] md:min-h-[1300px]"
         ></iframe>
       </div>
     </div>

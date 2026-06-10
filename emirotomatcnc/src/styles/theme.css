@@ -1,0 +1,48 @@
+/* Emir Otomat CNC — Tek tip light tema değişkenleri (Tailwind ile senkronize) */
+:root {
+  /* Ana renkler */
+  --color-primary: #427fda;
+  --color-primary-hover: #3568b8;
+  --color-primary-dark: #2a5db0;
+  --color-primary-light: #ebf2fc;
+
+  /* Arka plan */
+  --color-bg: #f5f7fb;
+  --color-bg-gradient-start: #f8fbff;
+  --color-bg-gradient-mid: #eef4ff;
+  --color-bg-gradient-end: #fdfefe;
+
+  /* Yüzey */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-surface-accent: #f1f5f9;
+
+  /* Kenarlık */
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  /* Yazı */
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-subtle: #64748b;
+
+  /* Footer */
+  --color-footer-bg: #232a34;
+  --color-footer-text: #e2e8f0;
+
+  /* Gölgeler */
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 4px 16px rgba(15, 23, 42, 0.12), 0 8px 24px rgba(66, 127, 218, 0.08);
+  --shadow-nav: 0 1px 0 0 #e2e8f0, 0 2px 8px rgba(15, 23, 42, 0.06);
+
+  /* Köşe yuvarlatma */
+  --radius-card: 0.75rem;
+  --radius-btn: 0.375rem;
+  --radius-sm: 0.25rem;
+
+  /* Geçiş süreleri */
+  --transition-fast: 200ms;
+  --transition-normal: 350ms;
+  --transition-slow: 600ms;
+}
+
