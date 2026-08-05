@@ -47,7 +47,10 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASSWORD
   },
   tls: {
-    rejectUnauthorized: false
+    // Sertifika doğrulaması varsayılan olarak AÇIK — kapatmak ortadaki adam saldırısına açık kapı
+    // bırakır. Yalnızca geliştirmede kendi imzalı sertifika kullanılıyorsa
+    // EMAIL_TLS_REJECT_UNAUTHORIZED=false ile kapatılabilir.
+    rejectUnauthorized: process.env.EMAIL_TLS_REJECT_UNAUTHORIZED !== 'false'
   }
 });
 
