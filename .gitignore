@@ -1,0 +1,20 @@
+# Kok seviye guvenlik agi — 2 Eylul 2026
+# Alt projelerin kendi .gitignore'lari var (backend/, emirotomatcnc/).
+# Bu dosya, koke yanlislikla konan cop dosyalarina karsi korur.
+
+node_modules/
+dist/
+build/
+.next/
+.cache/
+
+# Ortam degiskenleri — ASLA commit edilmez
+.env
+.env.*
+!.env.example
+
+# Loglar ve gecici
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
