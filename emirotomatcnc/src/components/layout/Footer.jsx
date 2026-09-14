@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
+import { openCookiePreferences } from "@/components/common/cookieConsentStore";
 
 function Footer() {
   const { t } = useTranslation();
@@ -53,6 +54,21 @@ function Footer() {
                   <Link to="/iletisim" className="text-gray-400 hover:text-white text-xs transition-colors duration-200">
                     {t("footer.contact")}
                   </Link>
+                </li>
+                <li>
+                  <Link to="/kvkk" className="text-gray-400 hover:text-white text-xs transition-colors duration-200">
+                    {t("footer.kvkk")}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/cerez-politikasi" className="text-gray-400 hover:text-white text-xs transition-colors duration-200">
+                    {t("footer.cookies")}
+                  </Link>
+                </li>
+                <li>
+                  <button type="button" onClick={openCookiePreferences} className="text-gray-400 hover:text-white text-xs transition-colors duration-200">
+                    {t("footer.cookieSettings")}
+                  </button>
                 </li>
               </ul>
             </div>

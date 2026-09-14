@@ -254,6 +254,11 @@ const UploadModel = () => {
             : 'Your order has been received successfully.'
       });
 
+      // Google Analytics: teklif formu gönderildi
+      if (window.gaEvent) {
+        window.gaEvent('generate_lead', { form_name: 'teklif_formu', file_count: files.length });
+      }
+
       setFiles([]);
       setCustomer(INITIAL_CUSTOMER_STATE);
 

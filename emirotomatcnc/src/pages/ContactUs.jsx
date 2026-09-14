@@ -1,9 +1,15 @@
 import cover from "@/assets/2003.jpg";
 import TitleComponent from "@/components/common/TitleComponent";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { openCookiePreferences, useCookieConsent } from "@/components/common/cookieConsentStore";
 
 function ContactUs() {
   const { t } = useTranslation();
+  const consent = useCookieConsent();
+  // Google Haritalar çerez bırakır: izin (İşlevsel Çerezler) ya da tıklama olmadan yüklenmez
+  const [showMapOnce, setShowMapOnce] = useState(false);
+  const showMap = Boolean(consent?.functional) || showMapOnce;
 
   return (
     <div className="flex items-center justify-center flex-col my-10 bg-white text-gray-900">
@@ -101,16 +107,61 @@ function ContactUs() {
           </div>
         </div>
       </div>
-      <iframe
-        width={1024}
-        height={400}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        src={t("contactUs.mapUrl")}
-        style={{
-          border: 0,
-        }}
-      />
+      {showMap ? (
+        <iframe
+          width={1024}
+          height={400}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          src={t("contactUs.mapUrl")}
+          style={{
+            border: 0,
+          }}
+        />
+      ) : (
+        <div className="w-full max-w-[1024px] px-4">
+          <div className="relative flex min-h-[400px] flex-col items-center justify-center overflow-hidden rounded-card border border-border-soft bg-surface-muted px-6 py-10 text-center">
+            <div
+              className="absolute inset-0 opacity-[0.07]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(#0f172a 1px, transparent 1px), linear-gradient(90deg, #0f172a 1px, transparent 1px)",
+                backgroundSize: "32px 32px",
+              }}
+            />
+            <div className="relative flex h-14 w-14 items-center justify-center rounded-full bg-primary-blue text-white shadow-card">
+              <svg className="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z" />
+              </svg>
+            </div>
+            <h2 className="relative mt-4 text-lg font-bold text-text-main">{t("contactUs.mapTitle")}</h2>
+            <p className="relative mt-2 max-w-xl text-sm leading-6 text-text-muted">{t("contactUs.mapText")}</p>
+            <div className="relative mt-6 flex w-full max-w-md flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                onClick={() => setShowMapOnce(true)}
+                className="min-h-[44px] flex-1 rounded-btn bg-primary-blue px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-blue-dark transition-colors duration-200"
+              >
+                {t("contactUs.mapShow")}
+              </button>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Emir%20Otomat%20CNC%20Ba%C5%9Fak%C5%9Fehir"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex min-h-[44px] flex-1 items-center justify-center rounded-btn border border-primary-blue bg-white px-4 py-2.5 text-sm font-semibold text-primary-blue hover:bg-primary-blue-light transition-colors duration-200"
+              >
+                {t("contactUs.mapOpen")}
+              </a>
+            </div>
+            <p className="relative mt-4 text-xs text-text-subtle">
+              {t("contactUs.mapHint")}{" "}
+              <button type="button" onClick={openCookiePreferences} className="font-semibold text-primary-blue hover:underline">
+                {t("contactUs.mapSettings")}
+              </button>
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

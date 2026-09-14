@@ -108,7 +108,9 @@
     "applyDescription": "Eğer siz de bu niteliklere sahipseniz ve ekibimize katılmak istiyorsanız, aşağıdaki formu doldurarak iş veya staj başvurusunda bulunabilirsiniz.",
     "jobFormTitle": "İş Başvuru Formu",
     "internshipFormTitle": "Staj Başvuru Formu",
-    "englishFormNotice": "İngilizce form üzerinde çalışıyoruz. Bu süreçte Türkçe formu kullanabilir veya bizimle doğrudan e-posta yoluyla iletişime geçebilirsiniz."
+    "englishFormNotice": "İngilizce form üzerinde çalışıyoruz. Bu süreçte Türkçe formu kullanabilir veya bizimle doğrudan e-posta yoluyla iletişime geçebilirsiniz.",
+    "kvkkNotice": "Başvuru formu Jotform altyapısıyla sunulur. Paylaştığınız bilgiler başvurunuzu değerlendirmek ve sizinle iletişime geçmek amacıyla işlenir. Lütfen sağlık, din, dernek üyeliği gibi özel nitelikli kişisel verilerinizi paylaşmayın.",
+    "kvkkLink": "KVKK Aydınlatma Metni"
   },
   "contactUs": {
     "title": "İletişim",
@@ -118,7 +120,13 @@
     "phoneNumber": "+90 (212) 671 17 40",
     "email": "Email",
     "emailAddress": "info@emirotomatcnc.com",
-    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.0634952086625!2d28.8058756!3d41.0676047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa56cdfc65fcf%3A0x2ed9bd14688ece58!2sEmir%20Otomat%20CNC!5e0!3m2!1str!2str!4v1708778990915!5m2!1str!2str"
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.0634952086625!2d28.8058756!3d41.0676047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa56cdfc65fcf%3A0x2ed9bd14688ece58!2sEmir%20Otomat%20CNC!5e0!3m2!1str!2str!4v1708778990915!5m2!1str!2str",
+    "mapTitle": "Konumumuz Google Haritalar'da",
+    "mapText": "Harita Google tarafından sunulur; gösterildiğinde Google çerezleri kullanılabilir. Bu nedenle harita siz istemeden yüklenmez.",
+    "mapShow": "Haritayı Göster",
+    "mapOpen": "Google Haritalar'da Aç",
+    "mapHint": "Haritanın her zaman gösterilmesi için çerez tercihlerinizden İşlevsel Çerezler'i açabilirsiniz.",
+    "mapSettings": "Çerez Tercihleri"
   },
   "nav": {
     "home": "Anasayfa",
@@ -147,7 +155,10 @@
     "address": "İkitelli Osb Mahallesi<br/>B6 Blok 134 Sokak<br/>Başakşehir/İstanbul",
     "tel": "+90 (212) 671 17 40",
     "email": "info@emirotomatcnc.com",
-    "copyright": "© 2024 EMİR OTOMAT CNC"
+    "copyright": "© 2024 EMİR OTOMAT CNC",
+    "kvkk": "KVKK Aydınlatma Metni",
+    "cookies": "Çerez Politikası",
+    "cookieSettings": "Çerez Tercihleri"
   },
   "industries": {
     "title": "Tüm Endüstrilerde Hassas Üretim Uygulamaları",
@@ -244,6 +255,8 @@
     "orderSuccess": "Siparişiniz başarıyla gönderildi!",
     "orderError": "Sipariş gönderilirken bir hata oluştu. Lütfen tekrar deneyin.",
     "sending": "Gönderiliyor...",
-     "serverError": "Sunucuda bir problem oluştu. Ekiplerimize bildirildi."
+     "serverError": "Sunucuda bir problem oluştu. Ekiplerimize bildirildi.",
+    "kvkkNotice": "Gönderdiğiniz bilgiler ve dosyalar, fiyat teklifi hazırlamak ve sizinle iletişime geçmek amacıyla işlenir. Ayrıntılı bilgi:",
+    "kvkkLink": "KVKK Aydınlatma Metni"
   }
 }

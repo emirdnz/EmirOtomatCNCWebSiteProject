@@ -1,18 +1,78 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<html class="scroll-smooth" lang="tr">
   <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-71YPDP9N7T"></script>
+    <!-- Google tag (gtag.js) + Consent Mode v2 -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-71YPDP9N7T');
+  // KVKK: ziyaretçi çerez panelinden izin verene kadar Google'a hiçbir veri gitmez.
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied'
+  });
+
+  (function () {
+    var GA_ID = 'G-71YPDP9N7T';
+    var CONSENT_KEY = 'cookie_consent';
+    var CONSENT_VERSION = 1;
+    var CONSENT_MAX_AGE = 365 * 24 * 60 * 60 * 1000; // 12 ay sonra tercih yeniden sorulur
+    // Ölçüm yalnız asıl alan adında: Netlify önizleme adresleri ve localhost sayılmaz
+    var MEASURE = /(^|\.)emirotomatcnc\.com$/.test(location.hostname);
+    var loaded = false;
+
+    // Çerez bandı ve tercih paneli bu fonksiyonu çağırır
+    window.applyCookieConsent = function (c) {
+      gtag('consent', 'update', {
+        analytics_storage: c.analytics ? 'granted' : 'denied',
+        ad_storage: c.ads ? 'granted' : 'denied',
+        ad_user_data: c.ads ? 'granted' : 'denied',
+        ad_personalization: c.ads ? 'granted' : 'denied'
+      });
+      if (!MEASURE || loaded || !(c.analytics || c.ads)) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    };
+
+    try {
+      var saved = JSON.parse(localStorage.getItem(CONSENT_KEY));
+      if (saved && saved.version === CONSENT_VERSION && Date.now() - saved.date < CONSENT_MAX_AGE) {
+        window.applyCookieConsent(saved);
+      }
+    } catch (e) {}
+
+    // Olay gönderimi: yalnız izin verilip ölçüm açıldıysa
+    window.gaEvent = function (name, params) {
+      if (loaded) gtag('event', name, params);
+    };
+
+    // Telefon / WhatsApp / e-posta tıklamaları
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest && e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href');
+      var name = /^tel:/i.test(href) ? 'phone_click'
+        : /wa\.me|whatsapp\.com/i.test(href) ? 'whatsapp_click'
+        : /^mailto:/i.test(href) ? 'email_click'
+        : null;
+      if (name) window.gaEvent(name, { link_url: href });
+    }, true);
+  })();
 </script>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Emir Otomat CNC: 1986'dan beri İstanbul İkitelli'de CNC otomat, index ve revolver tezgâhlarıyla endüstriyel yedek parça üretimi. ISO 9001 sertifikalı."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

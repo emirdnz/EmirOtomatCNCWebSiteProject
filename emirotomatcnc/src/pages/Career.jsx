@@ -105,6 +105,12 @@ function Career() {
         </h1>
       </div>
       <div className="jotform-form">
+        <p className="mx-4 mb-4 max-w-3xl rounded-md border-l-4 border-primary-blue bg-primary-blue-light px-4 py-3 text-sm leading-6 text-text-main md:mx-auto">
+          {t("career.kvkkNotice")}{" "}
+          <a href="/kvkk" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary-blue underline">
+            {t("career.kvkkLink")}
+          </a>
+        </p>
         {i18n.language === "en" && (jobFormIdEN === jobFormIdTR) && (
           <div className="text-center p-4 bg-yellow-50 border border-yellow-300 rounded-md mb-4 mx-4 max-w-3xl md:mx-auto">
             <p className="text-yellow-800">

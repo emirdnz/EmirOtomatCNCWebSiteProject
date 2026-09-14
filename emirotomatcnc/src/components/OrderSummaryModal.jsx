@@ -108,6 +108,13 @@ export default function OrderSummaryModal({ isOpen, onClose, onConfirm, customer
         </div>
       </div>
 
+      <p className="mx-1 mt-4 rounded-md border-l-4 border-primary-blue bg-primary-blue-light px-3 py-2 text-xs leading-5 text-text-main">
+        {t('uploadModel.kvkkNotice')}{' '}
+        <a href="/kvkk" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary-blue underline">
+          {t('uploadModel.kvkkLink')}
+        </a>
+      </p>
+
       <div className="modal-actions">
         <button className="cancel-button" onClick={onClose}>
           {t('uploadModel.cancel')}

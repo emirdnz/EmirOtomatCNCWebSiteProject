@@ -13,9 +13,13 @@ import Certificates from "@/pages/Certificates";
 import Footer from "@/components/layout/Footer";
 import ContactUs from "@/pages/ContactUs";
 import ScrollToTop from "@/components/common/ScrollToTop";
+import SeoHead from "@/components/common/SeoHead";
+import CookieConsent from "@/components/common/CookieConsent";
 import Machines from "@/pages/Machines";
 import { ThemeProvider } from "@material-tailwind/react";
 import UploadModel from "@/pages/UploadModel";
+import Kvkk from "@/pages/Kvkk";
+import CookiePolicy from "@/pages/CookiePolicy";
 function App() {
 
   const { i18n } = useTranslation();
@@ -120,6 +124,7 @@ function App() {
           {/* {window.location.pathname == "/" ? null : <Navbar />} */}
           <Header />
           <ScrollToTop />
+          <SeoHead />
 
           {loading ? (
             <div className="flex justify-center items-center  h-[80vh] ">
@@ -137,11 +142,14 @@ function App() {
                 <Route path="/staj" element={<Career />} />
                 <Route path="/iletisim" element={<ContactUs />} />
                 <Route path="/upload-model" element={<UploadModel />} />
+                <Route path="/kvkk" element={<Kvkk />} />
+                <Route path="/cerez-politikasi" element={<CookiePolicy />} />
                 <Route path="*" element={<Homepage />} />
               </Routes>
               <Footer />
             </>
           )}
+          <CookieConsent />
         </div>
       </ThemeProvider>
   );
