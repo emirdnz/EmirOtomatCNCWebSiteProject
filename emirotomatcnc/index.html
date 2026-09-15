@@ -53,7 +53,7 @@
       if (loaded) gtag('event', name, params);
     };
 
-    // Telefon / WhatsApp / e-posta tıklamaları
+    // Telefon / WhatsApp / e-posta / adres (harita) tıklamaları
     document.addEventListener('click', function (e) {
       var link = e.target.closest && e.target.closest('a[href]');
       if (!link) return;
@@ -61,6 +61,7 @@
       var name = /^tel:/i.test(href) ? 'phone_click'
         : /wa\.me|whatsapp\.com/i.test(href) ? 'whatsapp_click'
         : /^mailto:/i.test(href) ? 'email_click'
+        : /maps\.app\.goo\.gl|google\.[a-z.]+\/maps/i.test(href) ? 'map_click'
         : null;
       if (name) window.gaEvent(name, { link_url: href });
     }, true);
