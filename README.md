@@ -57,6 +57,9 @@ npm install
 npm run dev                      # .env dosyası gerekir, aşağıya bakın
 ```
 
+Sitenin e-posta servisine ulaşması için `emirotomatcnc/.env` içinde `VITE_API_DOMAIN` (servisin adresi)
+ve `VITE_API_PORT` tanımlanır.
+
 ### E-posta servisinin ortam değişkenleri
 
 | Değişken | Ne |
